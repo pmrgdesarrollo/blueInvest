@@ -1,0 +1,107 @@
+<div class="cuadrado d-flex align-items-md-center align-items-lg-center text-center">
+
+        <div class="container">
+        
+                <div class="navbar-brand text-center"><i class="far fa-smile"></i> Bienvenido!</div>
+                <hr>
+            
+            <h2 class="title2 tamaño text-center mt-4 mb-3" >Registra tu cuenta</h2>
+         
+        
+<!-- FORMULARIO DE REGISTRO DE USUARIOS-->
+<form ngNativeValidate [formGroup]='forma' (ngSubmit)="registrarUsuario(forma.value)"  >
+
+<div class="form-group">
+<div class="input-group">
+<input type="text" 
+class="form-control" 
+                formControlName="nombre" 
+placeholder="Nombre"
+required>
+</div>
+</div>
+
+<div class="form-group">
+<div class="input-group">
+<input type="email" 
+class="form-control" 
+placeholder="Correo"
+                formControlName="email" 
+required>
+</div>
+</div>
+                   
+<div class="form-group">
+<div class="input-group">
+<input type="password" 
+class="form-control"
+placeholder="Digita una contraseña"
+              formControlName="password" 
+required>
+</div>
+</div>
+
+<div class="form-group">
+<div class="input-group">
+<input type="password" 
+class="form-control"
+placeholder="Confirma la contraseña"
+               formControlName="password2"
+required>
+</div>
+</div>
+
+<div class="" *ngIf="forma['errors']?.sonIguales" >
+<p class="text-light" >Las contraseñas deben coincidir</p>
+</div>
+
+<div class="form-check form-check-inline">
+<input class="form-check-input" formControlName="role" type="radio"  value="INVERSIONISTA">
+<label class="form-check-label" for="inlineRadio1">Inversor</label>
+</div>
+<div class="form-check form-check-inline">
+<input class="form-check-input" formControlName="role" type="radio"  value="CORREDOR">
+<label class="form-check-label" for="inlineRadio2">Corredor</label>
+</div>
+
+
+<div class="form-group row mt-3">
+<div class="col-md-12">
+<div class="checkbox checkbox-primary p-t-0">
+<input id="checkbox-signup" 
+type="checkbox"  
+formControlName="condiciones" >
+<label for="checkbox-signup">Acepto los<a href="#"> Terminos</a></label>
+</div>
+</div>
+</div>
+                  
+<div class="form-group formularioRegistro">
+<button  type="submit" class="btn btn-success submit-btn btn-block">Registrate</button>
+</div>
+ 
+</form>
+
+            <div class="form-group m-b-0">
+            <div class="col-sm-12 text-center">
+            <h2 class="tamaño" >Ya tienes cuenta? <a routerLink="/login" class="text-light m-l-5"><b>ingresa aquí</b></a></h2>
+            </div>
+            </div>
+              
+      
+          <div class="row mt-4">
+              <div class="col-xs-12 col-sm-12 col-md-12 m-t-5 text-center">
+              <div>
+              <button type="button" class="btn  btn-dark btn-app-store mr-2"><i class="fab fa-apple"></i> <span class="small"> BlueInvest</span> <span class="big"> App Store</span></button>
+              <button type="button" class="btn  btn-dark btn-app-store mt-1"><i class="fab fa-android"></i> <span class="small"> BlueInvest</span> <span class="big"> Play Store</span></button>
+              </div>
+              </div>
+              </div>
+           
+       
+         
+        </div>   
+                  
+        </div>
+
+      

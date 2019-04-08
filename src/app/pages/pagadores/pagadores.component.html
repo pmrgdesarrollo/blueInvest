@@ -1,0 +1,37 @@
+<div class="p-0 d-none d-md-block col-md-3 d-lg-block float-left col-lg-2">
+    <app-sidebar></app-sidebar>
+</div>
+
+
+<div class="wrapper col-md-8 col-lg-10 mt-3 d-inline-block ">
+
+    <div class="jumbotron">
+        <h1 class="display-4">Pagadores!</h1>
+        <p class="lead">Los pagadores publicados han sido aprobados por BlueInvest.</p>
+        <hr class="my-4">
+        <p class="color">Puedes publicar tus pagadores desde el panel de administración</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+        </p>
+    </div>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Nombre del pagador</th>
+                <th scope="col">Nit del pagador</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Ver detalles</th>
+            </tr>
+        </thead>
+        <tbody *ngFor='let pagador of pagadores'>
+            <tr class="table-primary">
+                <th scope="row">{{ pagador.nombre }}</th>
+                <td> {{ pagador.nit }} </td>
+                <td> {{ pagador._id }} </td>
+                <td><button type="submit" (click)="verPagador( pagador._id )" class="col-12 btn btn-success mt-2">Ver</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

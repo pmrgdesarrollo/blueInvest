@@ -1,0 +1,81 @@
+<div class="cuadrado d-flex align-items-md-center align-items-lg-center">
+
+    <div class="container">
+    
+            <div class="navbar-brand text-center"><i class="far fa-smile"></i> Bienvenido!</div>
+            <hr>
+        
+        <h2 class="title2 tamaño text-center mt-4 mb-3" >Ingresa a tu cuenta con tu nombre y correo registrados</h2>
+        <!-- AQUI FALTA PONER EL NGSUBMIT PARA ENVIAR EL FORMIULARIO -->
+    
+    
+<form  class="formularioRegistro" (ngSubmit)="ingresar(f)" ngForm  #f="ngForm">
+               
+<div class="form-group">
+<div class="input-group">
+<input type="text" 
+class="form-control" 
+placeholder="Correo electronico"
+ngModel
+name="email"
+required>
+</div>
+</div>
+            
+<div class="form-group">
+<div class="input-group">
+<input type="password" 
+class="form-control"
+placeholder="Contraseña"
+ngModel
+name="password"
+required>
+</div>
+</div>
+
+<div class="form-group row">
+<div class="col-md-12">
+<div class="checkbox checkbox-info pull-left p-t-0">
+<input [(ngModel)]='recordarme' name="recordarme" id="checkbox-signup" type="checkbox" class="filled-in chk-col-light-blue">
+<label  for="checkbox-signup"> Recordarme </label>
+</div> 
+</div>
+</div>
+              
+<div class="form-group text-center">
+<div class="col-xs-12 p-b-20">
+<button class="btn btn-block btn-lg btn-info btn-rounded" type="submit">ingresar</button>
+</div>
+</div>
+     
+</form>
+        
+<div class="form-group m-b-0">
+<div class="col-sm-12 text-center">
+<small>No tienes cuenta?</small> <a routerLink="/register" class="text-light m-l-5"> Registrate aquí</a>
+</div>
+</div>
+    
+<h2 class="title2 tamaño text-center mt-4 mb-3" >O Ingresa con tu usuario de google</h2>
+    
+<div class="row">
+<div class="col-xs-12 col-sm-12 col-md-12 m-t-5 text-center">
+<div>
+<button type="button" routerLink="/register" id="btnGoogle" class="btn btn-danger btn-gplus" title="Login with Google"><i class="fab fa-google-plus-g pr-1"></i> Google +</button>
+</div>
+</div>
+</div>
+    
+      
+<div class="row mt-4">
+<div class="col-xs-12 col-sm-12 col-md-12 m-t-5 text-center">
+<div>
+<button type="button" class="btn  btn-dark btn-app-store"><i class="fab fa-apple"></i> <span class="small"> BlueInvest</span> <span class="big"> App Store</span></button>
+<button type="button" class="btn  btn-dark btn-app-store mt-1"><i class="fab fa-android"></i> <span class="small"> BlueInvest</span> <span class="big"> Play Store</span></button>
+</div>
+</div>
+</div>
+    
+</div>   
+              
+</div>

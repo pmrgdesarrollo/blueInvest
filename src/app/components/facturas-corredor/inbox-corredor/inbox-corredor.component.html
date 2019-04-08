@@ -1,0 +1,31 @@
+<h4><small>Nuevas Ofertas:</small></h4>
+
+<div class="p-1 marco">
+
+<table class="table tamano text-center">
+<thead>
+  <tr>
+    <th scope="col">Usuario</th>
+    <th scope="col">Factura</th>
+    <th scope="col">valor</th>
+    <th scope="col">tasa</th>
+  </tr>
+</thead>
+
+<tbody> 
+  <tr class="table-active text-center" *ngFor="let oferta of misOfertas" >
+
+    <th scope="row"> <a class="color" [routerLink]="['/usuario' , oferta.usuario ]" >Ver Perfil</a> </th>
+    <td> <a class="color" [routerLink]="['/corredor/factura' , oferta.factura ]"> {{ oferta?.factura }} </a></td>
+    <td>{{ oferta?.valorOferta | currency:'COP':'$' }}</td>
+    <td>{{ oferta?.tasaOferta }} </td>
+
+  </tr>
+
+  </tbody>
+
+</table>
+
+
+
+</div>

@@ -1,0 +1,445 @@
+<div class="container mt-2">
+        <h2><small>Persona Natural</small></h2><h4><small>Informacion personal</small></h4>
+        
+<form  #formularioPersonaJuridica="ngForm">
+        
+<!--INFORMACION PERSONAL-->       
+<div class="container fondo p-2">
+        <!--TIPO NOMBRE Y APEELIDO-->  
+        <div class="row">
+        
+        <div class="form-group mb-1 col-sm-12 col-md-12 col-lg-3 ">
+        <select class="custom-select custom-select-sm">
+        <option selected="">Tipo de solicitante</option>
+        <option value="INVERSIONISTA">Titular</option>
+        <option value="CORREDOR">Beneficiario</option>
+        </select>
+        </div>
+        
+        <div class="form-group mb-1  col-sm-12 col-md-12 col-lg-9">
+        <input class="form-control form-control-sm"
+        name=""  
+        type="text" 
+        placeholder="Nombre y apellido" 
+        id="inputSmall">
+        </div>
+        
+        </div>
+        <!--DOCUMENTO IDENTIDAD-SEXO-->
+        <div class="row">
+        
+        <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-8 ">
+        <input class="form-control form-control-sm"
+        name=""  
+        type="number" 
+        placeholder="No Documento de identidad" 
+        id="inputSmall">
+        </div>
+        
+        
+        <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4">
+        <select class="custom-select custom-select-sm">
+        <option selected="">sexo</option>
+        <option value="INVERSIONISTA">Mujer</option>
+        <option value="CORREDOR">hombre</option>
+        </select>
+        </div>
+        
+        </div>
+        <!--FECHA-PAIS-ESTADOCIVIL-->
+        <div class="row">
+        
+        <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4 ">
+        <input class="form-control form-control-sm"
+        name="valorFactura"  
+        type="date" 
+        placeholder="Fecha de nacimiento" 
+        id="inputSmall">
+        </div>
+        
+        <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4 ">
+        <input class="form-control form-control-sm"
+        name="valorFactura"  
+        type="text" 
+        placeholder="Pais de nacimiento" 
+        id="inputSmall">
+        </div>
+        
+        <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4">
+        <select class="custom-select custom-select-sm">
+        <option selected="">Estadi civil</option>
+        <option value="Soltero">Soltero</option>
+        <option value="Casado">Casado</option>
+        <option value="Divorciado">divorciado</option>
+        <option value="Viduo">viudo</option>
+        <option value="Otro">otro</option>
+        </select>
+        </div>
+        
+        </div>
+        <!--RESIDENCIA-CIUDAD-TELEFONO-->
+        <div class="row">
+        
+        <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-6">
+        <input class="form-control form-control-sm"
+        name=""  
+        type="text" 
+        placeholder="direccion residencia" 
+        id="inputSmall">
+        </div>
+        
+        <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
+        <input class="form-control form-control-sm"
+        name=""  
+        type="text" 
+        placeholder="ciudad" 
+        id="inputSmall">
+        </div>
+        
+        <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
+        <input class="form-control form-control-sm"
+        name=""  
+        type="text" 
+        placeholder="Telefono" 
+        id="inputSmall">
+        </div>
+        
+        </div>
+        <!--OFICINA-CIUDAD-TELEFONO-->
+        <div class="row">
+                
+        <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-6">
+        <input class="form-control form-control-sm"
+        name=""  
+        type="text" 
+        placeholder="Direccion Oficina" 
+        id="inputSmall">
+        </div>    
+                    
+        <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
+        <input class="form-control form-control-sm"
+        name=""  
+        type="text" 
+        placeholder="Ciudad" 
+        id="inputSmall">
+        </div>
+        
+        <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
+        <input class="form-control form-control-sm"
+        name=""  
+        type="text" 
+        placeholder="Telefono" 
+        id="inputSmall">
+        </div>
+        
+        </div>
+        <!--CORRESPONDENCIA-CIUDAD-TELEFONO-->
+        <div class="row">
+        
+        <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-6">
+        <input class="form-control form-control-sm"
+        name=""  
+        type="text" 
+        placeholder="direccion correspondencia" 
+        id="inputSmall">
+        </div>
+        
+        <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
+        <input class="form-control form-control-sm"
+        name=""  
+        type="text" 
+        placeholder="Email" 
+        id="inputSmall">
+        </div> 
+        
+        
+        <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
+        <input class="form-control form-control-sm"
+        name=""  
+        type="text" 
+        placeholder="Celular" 
+        id="inputSmall">
+        </div>
+        
+        </div>
+        
+</div>
+
+<!--BENEFICIARIOS-->
+<h4><small>Beneficiarios u ordenantes principales</small></h4>
+<div class="container fondo p-2">
+        
+            <!--TIPO NOMBRE Y APEELIDO-->  
+            <div class="row">
+            
+            <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
+            <select class="custom-select custom-select-sm">
+            <option selected="">Tipo de solicitante</option>
+            <option value="INVERSIONISTA">Titular</option>
+            <option value="CORREDOR">Beneficiario</option>
+            </select>
+            </div>
+            
+            <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-9">
+            <input class="form-control form-control-sm"
+            name=""  
+            type="text" 
+            placeholder="Nombre y apellido" 
+            id="inputSmall">
+            </div>
+            
+            </div>
+            
+            <!--DOCUMENTO IDENTIDAD-SEXO-->
+            <div class="row">
+            
+            <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-8 ">
+            <input class="form-control form-control-sm"
+            name=""  
+            type="number" 
+            placeholder="No Documento de identidad" 
+            id="inputSmall">
+            </div>
+            
+            
+            <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4">
+            <select class="custom-select custom-select-sm">
+            <option selected="">sexo</option>
+            <option value="INVERSIONISTA">Mujer</option>
+            <option value="CORREDOR">hombre</option>
+            </select>
+            </div>
+            
+            </div>
+            
+            <!--FECHA-PAIS-ESTADOCIVIL-->
+            <div class="row">
+            
+            <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4 ">
+            <input class="form-control form-control-sm"
+            name="valorFactura"  
+            type="date" 
+            placeholder="Fecha de nacimiento" 
+            id="inputSmall">
+            </div>
+            
+            <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4 ">
+            <input class="form-control form-control-sm"
+            name="valorFactura"  
+            type="text" 
+            placeholder="Pais de nacimiento" 
+            id="inputSmall">
+            </div>
+            
+            <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4">
+            <select class="custom-select custom-select-sm">
+            <option selected="">Estadi civil</option>
+            <option value="Soltero">Soltero</option>
+            <option value="Casado">Casado</option>
+            <option value="Divorciado">divorciado</option>
+            <option value="Viduo">viudo</option>
+            <option value="Otro">otro</option>
+            </select>
+            </div>
+            
+            </div>
+            <!--RESIDENCIA-CIUDAD-TELEFONO-->
+            <div class="row">
+            
+            <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-6">
+            <input class="form-control form-control-sm"
+            name=""  
+            type="text" 
+            placeholder="direccion residencia" 
+            id="inputSmall">
+            </div>
+            
+            <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
+            <input class="form-control form-control-sm"
+            name=""  
+            type="text" 
+            placeholder="ciudad" 
+            id="inputSmall">
+            </div>
+            
+            <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
+            <input class="form-control form-control-sm"
+            name=""  
+            type="text" 
+            placeholder="Telefono" 
+            id="inputSmall">
+            </div>
+            
+            </div>
+            <!--OFICINA-CIUDAD-TELEFONO-->
+            <div class="row">
+                    
+            <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-6">
+            <input class="form-control form-control-sm"
+            name=""  
+            type="text" 
+            placeholder="Direccion Oficina" 
+            id="inputSmall">
+            </div>    
+                        
+            <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
+            <input class="form-control form-control-sm"
+            name=""  
+            type="text" 
+            placeholder="Ciudad" 
+            id="inputSmall">
+            </div>
+            
+            <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
+            <input class="form-control form-control-sm"
+            name=""  
+            type="text" 
+            placeholder="Telefono" 
+            id="inputSmall">
+            </div>
+            
+            </div>
+            <!--CORRESPONDENCIA-CIUDAD-TELEFONO-->
+            <div class="row">
+            
+            <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-6">
+            <input class="form-control form-control-sm"
+            name=""  
+            type="text" 
+            placeholder="direccion correspondencia" 
+            id="inputSmall">
+            </div>
+            
+            <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
+            <input class="form-control form-control-sm"
+            name=""  
+            type="text" 
+            placeholder="Email" 
+            id="inputSmall">
+            </div> 
+            
+            
+            <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
+            <input class="form-control form-control-sm"
+            name=""  
+            type="text" 
+            placeholder="Celular" 
+            id="inputSmall">
+            </div>
+            
+            </div>
+            
+</div>
+
+<!--INFORMACION FINANCIERA-->
+<h4><small>Informacion financiera</small></h4>
+<div class="container fondo p-2">
+
+          <div class="row">
+            
+                <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-6">
+                <input class="form-control form-control-sm"
+                name=""  
+                type="text" 
+                placeholder="Profesion" 
+                id="inputSmall">
+                </div>
+                
+                <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
+                <input class="form-control form-control-sm"
+                name=""  
+                type="text" 
+                placeholder="Empresa" 
+                id="inputSmall">
+                </div>
+                
+                <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
+                <input class="form-control form-control-sm"
+                name=""  
+                type="text" 
+                placeholder="Cargo" 
+                id="inputSmall">
+                </div>
+                
+                </div>
+
+                <div class="row">
+            
+                        <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-6">
+                        <input class="form-control form-control-sm"
+                        name=""  
+                        type="text" 
+                        placeholder="Ingresos Mensuales" 
+                        id="inputSmall">
+                        </div>
+                        
+                        <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
+                        <input class="form-control form-control-sm"
+                        name=""  
+                        type="text" 
+                        placeholder="Total activos" 
+                        id="inputSmall">
+                        </div>
+                        
+                        <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
+                        <input class="form-control form-control-sm"
+                        name=""  
+                        type="text" 
+                        placeholder="Total pasivos" 
+                        id="inputSmall">
+                        </div>
+                        
+                        </div>    
+                        
+</div>   
+
+<h4><small>Referencias Bancarias</small></h4>
+<div class="container fondo p-2">
+
+              <div class="row">
+          
+              <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4">
+              <input class="form-control form-control-sm"
+              name=""  
+              type="text" 
+              placeholder="entidad" 
+              id="inputSmall">
+              </div>
+              
+              <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-2">
+              <select class="custom-select custom-select-sm">
+              <option selected="">Tipo de cuenta</option>
+              <option value="Soltero">Ahorros</option>
+              <option value="Casado">Corriente</option>
+              </select>
+              </div>
+
+              <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
+              <input class="form-control form-control-sm"
+              name=""  
+              type="text" 
+              placeholder="Numero de cuenta" 
+              id="inputSmall">
+              </div>
+
+              <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
+              <input class="form-control form-control-sm"
+              name=""  
+              type="text" 
+              placeholder="Titular" 
+              id="inputSmall">
+              </div>
+              
+              </div>
+ 
+                      
+</div>    
+
+<div class="form-group formularioRegistro">
+<button [routerLink]="['/corredor']" class="btn btn-success submit-btn btn-block mt-4 mb-5">Enviar datos</button>
+</div>
+
+</form>
+        
+
+</div>

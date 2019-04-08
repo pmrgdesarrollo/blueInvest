@@ -1,0 +1,139 @@
+<div class="fondo-negro animated fadeIn" [ngClass]="modal.oculto">
+
+    <div class="modal radio" style="display: block" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body borde p-0">
+
+
+                    <div class="form-group m-0 borde  p-4">
+                        <button type="button" (click)="ocultar()" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+
+                        <h4 class="letra mt-4 mb-0">Publica una nueva factura!</h4>
+
+
+
+
+
+                        <form [formGroup]='forma' (ngSubmit)="publicarFactura(forma)">
+                            <h6 class="mt-4">Selecciona un pagador</h6>
+                            <div class="form-row">
+                                <div class="form-group col-12 p-0">
+                                    <select class="form-control form-control-sm " formControlName="pagador">
+                                     <option selected>Selecciona un Pagador registrado</option>
+                                     <option *ngFor=" let p of pagadores ; index as i "
+                                     [value]=" p.nombre " required > {{ p.nombre }} </option></select>
+                                </div>
+                            </div>
+
+                            <h6 class="mt-1">Selecciona un descontador</h6>
+                            <div class="form-row">
+                                <div class="form-group col-12 p-0">
+                                    <select class="form-control form-control-sm " formControlName="descontador">
+                                    <option selected>Selecciona un descontador registrado</option>
+                                    <option *ngFor=" let s of descontadores ; index as i "
+                                    [value]=" s.nombre " required > {{ s.nombre }} </option>
+                        </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row mt-2 ">
+                                <div class="form-group col-3">
+                                    <label class="col-form-label-sm letraInput">Valor $</label>
+                                </div>
+                                <div class="form-group col-9">
+                                    <input class="form-control form-control-sm" formControlName="valor" type="number" placeholder="$" id="inputSmall">
+                                </div>
+
+                            </div>
+
+                            <div class="form-row mt-2 mb-0 pb-0">
+                                <div class="form-group col-3">
+                                    <label class="col-form-label-sm letraInput">Fact No:</label>
+                                </div>
+                                <div class="form-group col-9">
+                                    <input class="form-control form-control-sm mb-0 " formControlName="numero" type="text" placeholder="No factura" id="inputSmall">
+                                </div>
+                            </div>
+
+
+                            <div class="form-row mt-2">
+                                <div class="form-group col-12 p-0">
+                                    <input class="form-control form-control-sm mb-0 " formControlName="plazo" type="number" placeholder="Plazo de la factura en dias">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                    <div class="form-group col-6">
+                                            <label class="col-form-label-sm mb-0 letraInput"> % minimo para pago</label>
+                                            <input class="form-control form-control-sm" formControlName="porcentaje" type="number" placeholder=" ej: %90 " id="inputSmall">
+                                        </div>
+        
+                                        <div class="form-group col-6">
+                                            <label class="col-form-label-sm mb-0 letraInput">Monto minimo de inversion: </label>
+                                            <input class="form-control form-control-sm" formControlName="monto" type="number" placeholder="$" id="inputSmall">
+                                        </div>
+
+                             </div>
+
+
+
+                            <div class="form-row mt-4">
+                                <div class="form-group col-4">
+                                    <label class="col-form-label-sm mb-0 letraInput">tasa ref: </label>
+                                    <input class="form-control form-control-sm" formControlName="tasa" type="number" placeholder="tasa de referencia" id="inputSmall">
+                                </div>
+
+                                <div class="form-group col-4">
+                                    <label class="col-form-label-sm mb-0 letraInput">Vence: </label>
+                                    <input class="form-control form-control-sm" formControlName="vencimiento" type="date" placeholder="dd/mm/aa" id="inputSmall">
+                                </div>
+
+                                <div class="form-group col-4">
+                                    <label class="col-form-label-sm mb-0 letraInput">Disponible: </label>
+                                    <input class="form-control form-control-sm" formControlName="disponible" type="date" placeholder="dd/mm/aa" id="inputSmall">
+                                </div>
+
+                            </div>
+
+
+
+
+                            <div class="col-12 mt-5 p-0">
+                                <textarea class="form-control mt-2" formControlName="comentarios" id="exampleTextarea" placeholder="Tienes comentarios adicionales ?" rows="3"></textarea>
+                            </div>
+
+                            <div class="col-12 text-center ml-0 mt-4 mb-4 p-0 pb-0">
+                                <input type="file" class="btn-outline-secondary" (change)="seleccionImagen($event.target.files[0])" formControlName="docs">
+                            </div>
+
+
+
+
+                            <div class="modal-footer m-0">
+                                <button type="button" (click)="ocultar()" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary">Publicar factura</button>
+                            </div>
+
+
+
+                        </form>
+                    </div>
+
+
+                </div>
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,30 @@
+<h4 class="m-2"><small>Tus ofertas:</small></h4>
+
+<div class="p-1 marco">
+
+    <table class="table tamano text-center">
+    <thead>
+      <tr>
+        <th scope="col">Factura</th>
+        <th scope="col">valor ofertado</th>
+        <th scope="col">Aprobacion:</th>
+        <th scope="col">Estado:</th>
+      </tr>
+    </thead>
+    
+    <tbody> 
+      <tr class="table-active text-center" *ngFor="let oferta of misOfertas" >
+        <td>{{ oferta?.factura }}</td>
+        <td>{{ oferta?.valorOferta | currency:'COP':'$' }}</td>
+        <td *ngIf="oferta.estado === false" > pendiente </td>
+        <td *ngIf="oferta.estado === true" > exitosa </td>
+        <td> <h6 *ngIf="oferta.liberada === false" > completando </h6><button [routerLink]="['/inversor/pagar' , oferta?._id ]" (click)="enviarFactura(oferta?.factura )" class="btn btn-success" *ngIf="oferta.liberada === true" > Lista para pago </button> </td>
+     </tr>
+    
+      </tbody>
+    
+    </table>
+    
+    
+    
+    </div>

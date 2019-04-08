@@ -1,0 +1,121 @@
+a {
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.facturaPublicada {
+    border: solid 1px white;
+    border-radius: 10px;
+    background: #35A0D5;
+}
+
+head {
+    display: none;
+}
+
+th,
+td {
+    color: rgb(255, 255, 255);
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px;
+}
+
+.table {
+    background: #3397C8;
+}
+
+.table-primary{
+    background-color: #3397C8;
+
+}
+.bg-primary {
+    color: #3397C8;
+
+}
+
+.my-primary{
+background-color: rgb(129, 227, 140);
+}
+
+
+  .my-secondary{
+    color: rgb(0, 0, 0) ;
+    background-color: rgb(200, 215, 107);
+  }
+
+
+  .my-success{
+    color: lightYellow ;
+    background-color: rgb(64, 189, 223);
+  }
+
+  .my-warning{
+    color: lightYellow ;
+    background-color: rgb(35, 152, 255);
+  }
+
+
+  .my-info{
+    color: lightYellow ;
+    background-color: rgb(95, 148, 194);
+  }
+
+.my-light{
+    color: lightYellow ;
+    background-color: rgb(237, 105, 105);
+  }
+
+
+
+  .my-dark{
+    color: lightYellow ;
+    background-color: rgb(186, 79, 79);
+  }
+
+
+  .my-uno{
+    color: lightYellow ;
+    background-color: rgb(177, 50, 50);
+  }
+
+
+  .my-dos{
+    color: lightYellow ;
+    background-color: rgb(177, 50, 50);
+  }
+
+  .my-tres{
+    color: lightYellow ;
+    background-color: rgb(177, 50, 50);
+  }
+  .my-cuatro{
+    color: lightYellow ;
+    background-color: rgb(177, 50, 50);
+  }
+  .my-cinco{
+    color: lightYellow ;
+    background-color: rgb(177, 50, 50);
+  }
+
+  .my-seis{
+    color: lightYellow ;
+    background-color: rgb(177, 50, 50);
+  }
+
+  .my-siete{
+    color: lightYellow ;
+    background-color: rgb(177, 50, 50);
+  }
+
+  .my-ocho{
+    color: lightYellow ;
+    background-color: rgb(177, 50, 50);
+  }
+
+  .my-nueve{
+    color: lightYellow ;
+    background-color: rgb(177, 50, 50);
+  }
+
+

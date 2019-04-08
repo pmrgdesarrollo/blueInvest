@@ -1,0 +1,22 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "backend blueInvest nodeJs",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pablo Ramirez +57 311200489",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-fileupload": "^1.1.1-alpha.1",
+    "google-auth-library": "^3.0.0",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.4.4",
+    "mongoose-unique-validator": "^2.0.2"
+  }
+}

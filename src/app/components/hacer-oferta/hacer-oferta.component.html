@@ -1,0 +1,59 @@
+<div class="form-group m-0 borde  pr-3 pl-3">
+
+    <h2 class="letra mt-4 mb-0" >Hacer nueva oferta!</h2>
+  <hr class="mt-1" >
+    
+  <form (ngSubmit)="ofertar()" #formularioOferta="ngForm">
+
+  <div class="form-row mb-0 pb-0">
+          <div class="form-group col-3">
+          <label class="col-form-label-sm letraInput" >Fact No:</label>
+          </div>
+          <div class="form-group col-9" >
+          <input class="form-control form-control-sm mb-0 "
+                 #offacturaNumero="ngModel" 
+                 [(ngModel)]="oferta.numero" 
+                 name="FacturaNo:"  
+                 type="number" 
+                 placeholder="No factura" 
+                 id="inputSmall">
+      </div>
+  </div>
+  
+  <div class="form-row ">
+      <div class="form-group col-3">
+      <label class="col-form-label-sm letraInput" >Valor $</label>
+      </div>
+      <div class="form-group col-9" >
+      <input class="form-control form-control-sm"
+             #ofValor="ngModel" 
+             [(ngModel)]="oferta.valor" 
+             name="valorFactura"  
+             type="number" 
+             placeholder="$" 
+             id="inputSmall">
+      </div>
+  </div>
+  
+
+  <div class="form-row ">
+      <div class="form-group col-4 text-center">
+            <label class="col-form-label-sm mb-0 letraInput">tasa de oferta</label>
+            <input class="form-control form-control-sm"
+             #ofTasa="ngModel" 
+             [(ngModel)]="oferta.tasa" 
+             name="tasaref"  
+             type="number" 
+             placeholder="tasa de oferta" 
+             id="inputSmall">
+      </div>
+  </div>
+  
+  
+  <button type="submit" class="col-12 btn btn-light mt-5 mt-md-4 mt-lg-5 mb-1">Hacer oferta</button>
+ 
+      
+  
+  </form>
+  </div>
+  

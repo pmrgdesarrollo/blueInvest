@@ -1,0 +1,128 @@
+
+<div *ngIf='factura1?.valor == total' class="col-12 text-center">
+<h3> Factura completada !!!</h3>
+</div>
+
+<div class="facturaPublicada mt-2 m-1">
+    <h6 class="ml-1 mb-0 mt-3">No: {{ factura1?.numero }} </h6>
+
+    <table class="table-hover table-responsibe table-sm table m-0">
+        <thead class="text-left">
+            <tr>
+                <th scope="col">Pagador: {{ factura1?.pagador }} </th>
+                <th scope="col">descontador: {{ factura1?.descontador}} </th>
+                <th scope="col">Valor: {{ factura1?.valor | currency:'COP':'$' }}</th>
+                <th scope="col">Vence: {{ factura1?.vencimiento | date:'medium' }}</th>
+                <th scope="col">Plazo: {{ factura1?.plazo }}</th>
+            </tr>
+        </thead>
+    </table>
+
+    <div class="row mt-3 mb-1">
+        <div class="col-4">
+            <h6 class="ml-1 mb-0 mt-1">Estado: {{ progresoTotal }} % </h6>
+        </div>
+        <div class="col-8">
+            <h6 class="ml-1 mb-0 mt-1">Dias restantes: 12</h6>
+        </div>
+    </div>
+
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" role="progressbar" [attr.ariaValuenow]="progresoTotal" [style.width]="progresoTotal+'%'"></div>
+    </div>
+
+    <table class="table-hover table-responsibe table-sm table mb-2">
+        <thead class="text-left">
+            <tr>
+                <th scope="col">tasa ref:{{ factura1?.tasa }} </th>
+                <th scope="col">Recaudado: {{ total | currency:'COP':'$'}} </th>
+                <th scope="col"> Ofertas : {{ ofertaShortcut }} </th>
+
+                <th scope="col">Aprobadas: {{ aprobadas.length }} </th>
+            </tr>
+        </thead>
+    </table>
+
+</div>
+
+<!------------------------------------------------- OFERTAS SOBRE ESTA FACTURA ------------------------------------------------->
+
+<h4><small>Ofertas:</small></h4>
+
+<div class="p-1 marco">
+    <table class="table tamano text-center">
+        <thead>
+            <tr>
+                <th scope="col">Ranking</th>
+                <th scope="col">Usuario</th>
+                <th scope="col">
+                    <a (click)="sortValor()"> valor</a></th>
+                <th scope="col">
+                    <a (click)="sortTasa()"> tasa</a></th>
+                <th scope="col">Aceptar</th>
+                <th scope="col">Aceptar Fraccion</th>
+                <th scope="col">Rechazar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="text-center" *ngFor="let oferta of ofertas ; index as i" [ngClass]="{ 'table my-primary' : i == 0,
+                                                                                             'table my-secondary' : i == 1,
+                                                                                             'table my-success' : i == 2 ,
+                                                                                             'table my-warning' : i == 3 ,
+                                                                                             'table my-info' : i == 4 ,
+                                                                                             'table my-light' : i == 5 ,
+                                                                                             'table my-dark' : i == 6,
+                                                                                             'table my-uno' : i == 7,
+                                                                                             'table my-dos' : i == 8,
+                                                                                             'table my-tres' : i == 9,
+                                                                                             'table my-cuatro' : i == 10,
+                                                                                             'table my-cinco' : i == 11,
+                                                                                             'table my-seis' : i == 12,
+                                                                                             'table my-siete' : i == 13,
+                                                                                             'table my-ocho' : i == 14,
+                                                                                             'table my-nueve' : i == 15 }">
+
+
+
+
+                <th *ngIf=" oferta.estado == false " id="index" scope="row"> {{ i+1 }} </th>
+                <td *ngIf=" oferta.estado == false "><a class="color" [routerLink]="['/usuario' , oferta.usuario ]">Ver Perfil</a> </td>
+                <td *ngIf=" oferta.estado == false ">{{ oferta?.valorOferta | currency:'COP':'$' }}</td>
+                <td *ngIf=" oferta.estado == false ">{{ oferta?.tasaOferta }} </td>
+                <td *ngIf=" oferta.estado == false "> <button (click)="aceptar( oferta.valorOferta , oferta.tasaOferta , oferta.usuario , oferta.factura ,  oferta.estado , oferta.liberada , oferta.fraccion , oferta._id  )" class="btn btn-outline-light p-1"><i class="far fa-1x fa-check-circle"></i> </button> </td>
+                <td *ngIf=" oferta.estado == false "> <button (click)="aceptarFraccion( oferta.valorOferta , oferta.tasaOferta , oferta.usuario , oferta.factura ,  oferta.estado , oferta.liberada , oferta.fraccion , oferta._id   )" class="btn btn-outline-light p-1"><i class="fas fa-1x fa-clock"></i> </button> </td>
+                <td *ngIf=" oferta.estado == false "> <button (click)="rechazar()" class="btn btn-outline-light p-1"><i class="fas fa-1x fa-ban"></i></button> </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!------------------------------------------------- LIBERAR OFERTAS DE ESTA FACTURA ------------------------------------------------->
+
+<h4><small>Aceptadas:</small></h4>
+<h4><small>completado: {{ progresoTotal }}% el minimo es  {{ minimo }}% </small><small *ngIf=" liberar == false " > Aún no puedes liberar el pago</small></h4> <h4><small *ngIf=" liberar == true" > Ya puedes liberar los pagos</small></h4>
+<div class="p-1 marco">
+    <table  class="table tamano text-center">
+        <thead>
+            <tr>
+                <th scope="col">Usuario</th>
+                <th scope="col">valor</th>
+                <th scope="col">tasa</th>
+                <th scope="col">Opciones para el pago</th>
+                <th scope="col">Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="table-active text-center" *ngFor="let oferta of aprobadas ">
+                <th  scope="row"> <a class="color" [routerLink]="['/usuario' , oferta.usuario ]">Ver Perfil</a> </th>
+                <td *ngIf='!oferta.fraccion > 0' >{{ oferta?.valorOferta | currency:'COP':'$' }}</td><td *ngIf='oferta.fraccion > 0 ' >{{ oferta?.fraccion | currency:'COP':'$' }}</td>
+                <td >{{ oferta?.tasaOferta }} </td>
+                <td *ngIf="!oferta?.liberada" >
+                <button [routerLink]="['/corredor/aceptando' , oferta?._id ]" routerLinkActive="router-link-active"  (click)="liberarFactura( oferta.valorOferta , oferta.tasaOferta , oferta.usuario , oferta.factura , oferta.estado , oferta.liberada , oferta.fraccion , oferta._id  )" class="btn btn-sm btn-success"> Liberar </button>
+                <button (click)="retractarme( oferta.valorOferta , oferta.tasaOferta , oferta.usuario , oferta.factura , oferta.estado , oferta.liberada , oferta.fraccion , oferta._id )" class="btn btn-sm btn-danger ml-2"> Rechazar </button> </td>
+                <td *ngIf="!oferta?.liberada" > Sin liberar </td>
+                <td *ngIf="oferta?.liberada" > Liberada </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,93 @@
+
+.cuadrado{
+    height:90vh ;
+    background: rgba(218, 240, 255, 0.2);
+    border: 1px solid #48B2FF;
+    border-radius: 10px;
+    padding: 15px;
+    -moz-box-shadow:    3px 3px 5px 6px rgba(109, 108, 108, 0.085);
+    -webkit-box-shadow: 3px 3px 5px 6px   rgba(109, 108, 108, 0.085);
+    box-shadow:         3px 3px 5px 6px rgba(109, 108, 108, 0.085);
+}
+
+.tamaño{
+
+    font-size: 20px;
+}
+
+.celular{
+    margin-left: 300px;
+    margin-top:30px;
+}
+
+.titulo{
+
+    background:linear-gradient(to bottom, rgb(65, 65, 175),rgb(0, 204, 189));
+    height:auto;
+    width: 100%;
+    border-radius: 10px 10px 0 0 ;
+    padding-top: 60px;
+
+}
+
+.scrollingDiv
+{
+   overflow:scroll;
+}
+
+.letraResumen{
+
+  font-size:12px;
+
+}
+
+   .headerFacturas{
+    background:linear-gradient(to right, rgb(65, 65, 175),rgb(0, 204, 189));
+    border-radius:10px 10px 0 0 ;
+  }
+
+  .publicadas{
+   background:#2B83C8;
+
+   height:550px;
+   border-radius:0 0 10px 10px  ;
+
+  }
+
+
+
+.nav-link{
+    color: aliceblue;
+    font-size: 20px;
+}
+
+a{
+    color:white;
+  }
+
+.facturaPublicada{
+border:solid 1px white;
+border-radius:10px;
+background:#35A0D5;
+}
+
+  head{
+    display:none;
+  }
+
+  th{
+    color:white;
+    font-size:11px;
+    font-weight:500;
+   }
+
+   td{
+    color:white;
+    font-size:11px;
+    font-weight:500;
+   }
+
+  .table{
+
+    background:#3397C8;
+  }

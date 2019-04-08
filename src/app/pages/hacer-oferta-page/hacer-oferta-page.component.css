@@ -1,0 +1,26 @@
+.color{
+    color:rgb(1, 107, 188);
+}
+
+.letraInput{
+    font-size:12px;
+    font-weight:700;
+  }
+  
+  .form-row{
+    height:40px;
+  }
+  
+    .letra{
+      font-size:16px;
+      margin:0px;
+    }
+  
+    .borde{
+      background:rgb(68, 97, 145);
+      border-radius:10px;
+      border:solid 1px #BEC4CF;
+      -moz-box-shadow:    3px 3px 5px 6px rgba(109, 108, 108, 0.085);
+      -webkit-box-shadow: 3px 3px 5px 6px   rgba(109, 108, 108, 0.085);
+      box-shadow:         3px 3px 5px 6px rgba(109, 108, 108, 0.085);
+    }

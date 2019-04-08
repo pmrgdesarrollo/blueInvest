@@ -1,0 +1,64 @@
+
+
+<div class="container text-center ">
+
+  <h2>
+    Aceptaste la oferta!
+  </h2>
+  <div>
+    <h2> <small>numero: {{ oferta?._id }}</small>  </h2>
+    <h2> <small>valor: {{ oferta?.valorOferta | currency }} </small> </h2>
+    <h2> <small>tasa: {{ oferta?.tasaOferta }}%</small>  </h2>
+  </div>
+
+  <div class="container">
+    <div class="form-group mt-0 borde  pr-3 pl-3">
+  
+      <h2 class="letra mt-4 mb-0" > <small>envia tus datos al comprador</small></h2>
+      <hr class="mt-1" >
+        
+      <form  [formGroup]='forma' (ngSubmit)="enviarDatos( forma )" >
+      
+        <div class="form-inline m-1">
+
+
+  
+        <input class="form-control col-md-5 col-lg-6  form-control form-control-sm"
+        formControlName="nombre" 
+        type="text" 
+        placeholder="Tu nombre completo"
+        required>
+
+        <input class="form-control col-md-5 col-lg-6  form-control form-control-sm"
+        formControlName="cuenta" 
+        type="number" 
+        placeholder="Numero de cuenta"
+        required>
+
+        <input class="form-control col-md-5 col-lg-6  form-control form-control-sm"
+        formControlName="banco" 
+        type="text" 
+        placeholder="banco"
+        required>
+  
+        <input class="col-md-4 col-lg-6 mb-2 mb-md-0 mb-lg-0 form-control form-control-sm"
+        formControlName="tipo" 
+        type="text"
+        placeholder="Tipo de cuenta"
+        required>
+  
+        <button type="submit" class="col-sm-12 col-md-2 col-lg-12 mt-2 mb-2 btn btn-success btn-sm ">Enviar datos</button>
+  
+    </div>
+  
+     
+        
+       
+  
+    
+    </form>
+    </div>
+</div>
+
+</div>
+

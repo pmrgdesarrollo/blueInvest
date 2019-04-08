@@ -1,0 +1,37 @@
+ <div class="container"> 
+     <div class="jumbotron mt-4">
+    <h5 class="display-3 color">Factura publicada: <small>No:{{ factura?.numero }}</small> </h5>
+    <p class="lead">Las ofertas que obtendras sobre esta factura las puedes consultar en el panel de administración</p>
+    <hr class="my-4">
+    <p class="lead1 color" >En este momento puedes revisar de nuevo los campos por si debes agregar o editar algun campo.</p>
+    <div class="facturaPublicada mt-2 m-1">
+
+            <table class="table-hover table-responsibe table-sm table m-0 color">
+                <thead class="text-left">
+                    <tr>
+                        <th scope="col">Pagador: {{ factura?.pagador }} </th>
+                        <th scope="col">Valor: {{ factura?.valor | currency:'COP':'$' }}</th>
+                        <th scope="col">Vence: {{ factura?.vencimiento | date:'medium' }}</th>
+                        <th scope="col">Plazo: {{ factura?.plazo }}</th>
+                        <th scope="col">tasa ref:{{ factura?.tasa }} </th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="row mb-1">
+                <div class="col-12 text-center">
+                    <button type="button" routerLink="/corredor/publicadas" class="btn btn btn-success mr-2 mt-3">Regresar al panel de administracion</button>
+                </div>
+            </div>
+    
+    
+        </div>
+
+</div>
+
+
+
+
+
+
+
+</div>

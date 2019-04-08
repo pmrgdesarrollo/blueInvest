@@ -1,0 +1,48 @@
+
+<div class="row headerFacturas m-0">
+
+
+    <div class="col-sm-12 col-md-3 col-lg-3 m-0 p-0 mt-3">
+      <h4 class="title2 pl-1"> Mis Facturas </h4>
+    </div>
+    
+    <div class="col-sm-12 col-md-9 col-lg-9 text-center pb-2 ">
+          <div class="btn-group btn-group-toggle  mt-md-4 mt-lg-4 ">
+
+          <label class="btn btn-outline-success p-1" [routerLink]="['/inversor/inboxInversionista']" routerLinkActive="active"  >
+          Inbox
+          </label>
+          
+          <label class="btn btn-outline-success p-1" [routerLink]="['/inversor/disponibles']" routerLinkActive="active"  >
+          Disponibles
+          </label>
+
+          <label class="btn btn-outline-success p-1" [routerLink]="['/inversor/ofertadas']" routerLinkActive="active"  >
+          Mi posicion 
+          </label>
+              
+          <label class="btn btn-outline-primary p-1" [routerLink]="['/inversor/historicas']" routerLinkActive="active" >
+          Historico
+          </label>
+    
+          </div>
+    </div>
+    
+    <table class="table-hover table-responsibe table-sm table m-0">
+    <thead class="text-left letraResumen">
+    <tr>
+    <th scope="col">Disponible:$ </th>
+    <th scope="col">Invertido:$ </th>
+    <th scope="col">Utilidad:$ </th>
+    </tr>
+    </thead> 
+    </table>
+    
+    
+    </div>
+    
+    
+    <div class="publicadas pt-1 scrollingDiv">
+    <router-outlet></router-outlet>
+    </div>
+    

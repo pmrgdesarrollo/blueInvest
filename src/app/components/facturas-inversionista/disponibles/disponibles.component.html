@@ -1,0 +1,45 @@
+<div class="facturaPublicada mt-2 m-1" *ngFor="let factura of facturas" >
+
+    <h6 class="ml-1 mb-0 mt-3">Valor: {{ factura.valor |  currency:'COP':'$' }} </h6><h6 class="ml-1 mb-0 mt-3"> </h6>
+    
+    <table class="table-hover table-responsibe table-sm table m-0" >
+          <thead class="text-center">
+              <tr>
+                <th scope="col"><strong>Pagador:</strong>
+               <br> {{ factura.pagador }}</th>
+                <th scope="col"><strong>descontador:</strong>  <br> {{ factura.descontador}}</th>
+                 <th scope="col"><strong>Vence:</strong>  <br> {{ factura.vencimiento | date:'short' }}</th>
+                <th scope="col"><strong>Plazo:</strong>  <br> {{ factura.plazo }} d </th>
+                <th scope="col"><strong>Monto minimo aceptado:</strong>  <br> {{ factura.monto | currency:'COP':'$'  }} </th>
+                <th scope="col"><strong>minimo para liberar:</strong>  <br> {{ factura.porcentaje }}% </th>
+                <th scope="col"><strong>tasa ref:</strong>  <br> {{ factura.tasa }} </th>
+                <th scope="col"><strong>Factura No:</strong>  <br> {{ factura.numero }} </th>
+               </tr>
+            </thead> 
+    </table>
+
+    <table class="table-hover table-responsibe table-sm table mb-2">
+      <thead class="text-left">
+      <tr>
+ 
+  
+    
+      </tr>
+      </thead> 
+    </table>
+
+    <div>
+      <h6>Comentarios del corredor: <small>{{ factura.comentarios }} </small> </h6>
+    </div>
+    
+    <div class="row mb-1">
+      <div class="col-12 text-center">
+      <button type="button" (click)="hacerOferta( factura._id )"  class="btn btn-sm btn-success">Hacer una oferta</button>
+      <button type="button" (click)="hacerOferta( factura._id )" *ngIf="ofertada"  class="btn btn-sm btn-success">Ver mi posicion</button>
+      </div>
+    </div>
+    
+    
+    </div>
+    
+    

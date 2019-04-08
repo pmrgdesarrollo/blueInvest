@@ -1,0 +1,38 @@
+
+
+<div class="row m-0 fondoDivs pb-0 pt-0" >
+
+    <div class="col-12">
+
+
+
+    <form  [formGroup]='forma' (ngSubmit)="crearPagador(forma)" >
+          
+            <div class="form-inline m-0">
+            <h5>1.  </h5> <hr> 
+            <input class="form-control col-md-5 col-lg-5 m-1  form-control form-control-sm"
+            formControlName="nombre" 
+            type="text" 
+            placeholder="Nombre del pagador"
+            minlength="5" 
+            required>
+
+ <h2 class=" title2 tamañoletra align-content-center"><small> Nit:</small></h2> 
+
+            <input class="col-md-4 col-lg-4 m-1 form-control form-control-sm"
+            formControlName="nit" 
+            type="text"
+            placeholder="Nit del pagador"
+            required>
+            <button type="submit" class="col-sm-12 col-md-2 col-lg-1 btn btn-outline-light btn-sm ml-lg-2 ml-md-1"><i class="fas fa-user-plus"></i></button>
+           
+
+        </div>
+ 
+      </form>
+
+    </div>  
+
+</div>
+    
+

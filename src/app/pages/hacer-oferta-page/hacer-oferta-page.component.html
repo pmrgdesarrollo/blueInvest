@@ -1,0 +1,114 @@
+<div class="container">
+
+<div class="row">
+
+  <div class="col-6">
+
+<div class="container mt-3">
+  <div class="jumbotron p-3">
+    <h2> Listo {{ usuarioNombre }} </h2>
+    <h3>Estas a solo un paso!</h3>
+    <p class="color" >Verifica los datos en la factura.</p>
+    <div class="facturaPublicada mt-2 m-1" >
+  
+      <h6 class="ml-1 mb-0 mt-3 color">No:{{ factura?.numero }} </h6>
+      
+      <table class="table-hover table-responsibe table-sm table m-0">
+            <thead class="text-left color">
+                <tr>
+                  <th scope="col">Pagador: {{ factura?.pagador }} </th>
+                  <th scope="col">Valor: {{ factura?.valor | currency:'COP':'$' }}</th>
+                  <th scope="col">Vence: {{ factura?.vencimiento | date:'medium' }}</th>
+                  <th scope="col">Plazo: {{ factura?.plazo }}</th>
+                </tr>
+              </thead> 
+      </table>
+      
+      <div class="row mt-3 mb-1">
+      <div class="col-4">
+      <h6 class="ml-1 mb-0 mt-1 color">Estado: {{ progresoTotal }} %  </h6>
+      </div>
+      <div class="col-8">
+      <h6 class="ml-1 mb-0 mt-1 color">Dias restantes: 12</h6>
+      </div>
+      </div>
+      
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" role="progressbar" [attr.ariaValuenow]="progresoTotal" [style.width]="progresoTotal+'%'"></div>
+    </div>
+      
+      <table class="table-hover table-responsibe table-sm table mb-2">
+        <thead class="text-left color">
+        <tr>
+        <th scope="col">tasa ref:{{ factura?.tasa }} </th>
+        <th scope="col">Recaudado: {{ total | currency:'COP':'$'}} </th>
+        <th scope="col"> <a href=""> Ofertas : {{ ofertaShortcut }}<small>ver</small> </a></th>
+      
+        <th scope="col">Aprobadas: {{ aprobadas.length }} </th>
+        </tr>
+        </thead> 
+      </table>
+   
+    </div>
+  </div>
+</div> 
+
+<div class="container">
+    <div class="form-group mt-0 borde  pr-3 pl-3">
+  
+      <h2 class="letra mt-4 mb-0" >Haz la oferta!</h2>
+      <hr class="mt-1" >
+        
+      <form  [formGroup]='forma' (ngSubmit)="publicarOferta( forma )" >
+      
+        <div class="form-inline m-1">
+  
+        <input class="form-control col-md-5 col-lg-8  form-control form-control-sm"
+        formControlName="valorOferta" 
+        type="number" 
+        placeholder="$cuanto ofertas"
+        required>
+  
+        <input class="col-md-4 col-lg-4 mb-2 mb-md-0 mb-lg-0 form-control form-control-sm"
+        formControlName="tasaOferta" 
+        type="number"
+        placeholder="Tasa que propones"
+        required>
+  
+        <button type="submit" class="col-sm-12 col-md-2 col-lg-12 mt-2 mb-2 btn btn-success btn-sm ">Hacer la oferta</button>
+  
+    </div>
+  
+     
+        
+       
+  
+    
+    </form>
+    </div>
+</div>
+
+<div class="row mb-1">
+    <div class="col-12 text-center">
+    <button type="button" [routerLink]="['/inversor']" class="btn btn btn-primary mr-2 mt-1">O Regresa al panel de administración</button>
+    </div>
+    </div>
+
+</div>
+
+<div class="col-6">
+  
+ 
+
+  <div class="container mt-3 text-center">
+ <a [routerLink]="['/foto' , factura?._id ]" > <img [src]="factura?.docs|imagen" class="mb-3 imagen"> </a>
+    
+  </div>
+
+</div>
+
+
+
+</div>
+
+</div>

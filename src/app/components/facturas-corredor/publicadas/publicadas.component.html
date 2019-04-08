@@ -1,0 +1,35 @@
+<div class="row facturaPublicada mt-2 m-1" *ngFor="let factura of misfacturas">
+
+    <div class="col-sm-8 col-md-8 col-lg-9">
+
+        <h6 class="ml-1 mb-1 mt-3">No: {{ factura?.numero }} </h6>
+
+        <table class="table-hover table-responsibe table-sm table m-0">
+            <thead class="text-left">
+                <tr>
+                    <th scope="col">Pagador: {{ factura?.pagador }} </th>
+                    <th scope="col">descontador: {{ factura?.descontador}} </th>
+                    <th scope="col">Valor: {{ factura?.valor | currency:'COP':'$' }}</th>
+                    <th scope="col">Vence: {{ factura?.vencimiento | date:'short' }}</th>
+                    <th scope="col">Plazo: {{ factura?.plazo }}</th>
+                    <th scope="col">tasa ref:{{ factura?.tasa }} </th>
+                </tr>
+            </thead>
+
+        </table>
+
+        <div class="row  mt-2 mb-2">
+            <div class="col-12 text-center">
+                <button type="button" [routerLink]="['/corredor/factura' , factura._id ]" class="btn btn-sm btn-secondary mr-2 mt-1">ver estado</button>
+                <button type="button" (click)="eliminarFactura( factura._id )" class="btn btn-sm btn-danger">Eliminar publicacion</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-sm-4 col-md-4 col-lg-3">
+        <a  [routerLink]="['/corredor/foto' , factura?._id ]" > <img [src]="factura.docs|imagen" class="w-50  mt-1 mb-1 imagen"></a>
+       
+    </div>
+
+</div>

@@ -1,0 +1,76 @@
+<div class="container">
+
+  <h2> hacer el pago! </h2>
+
+  <div class="row">
+
+    <div class="col-6">
+
+      <h3>
+        Factura : <small>{{ factura?._id }}</small> 
+      </h3>
+
+      <img [src]="factura?.docs|imagen" class="w-50  mt-1 mb-1 imagen">
+
+      <h5>
+        Pagador: <small>{{ factura?.pagador}}</small> 
+      </h5>
+      <h5>
+        Descontador: <small>{{ factura?.descontador }}</small> 
+      </h5>
+      <h5>
+        Paga en : <small>{{ factura?.plazo}} dias </small> 
+      </h5>
+      
+
+    </div>
+
+    <div class="col-6">
+
+<h3>
+  Oferta: <small>{{ oferta?._id }}</small> 
+</h3>
+
+<h5>
+    Valor: <small>{{ oferta?.valorOferta | currency:'COP':'$' }}</small> 
+  </h5>
+  <h5>
+    usuario: <small>{{ oferta?.usuario.email }}</small> 
+  </h5>
+  <h5>
+     Banco: <small>{{ oferta?.banco}}</small> 
+  </h5>
+  <h5>
+     Tipo de cuenta: <small>{{ oferta?.tipo }}</small> 
+ </h5>
+  <h5>
+     No cuenta: <small>{{ oferta?.cuenta}}</small> 
+  </h5>
+
+  <form method="post" action="https://checkout.payulatam.com/ppp-web-gateway-payu/">
+    <input name="merchantId"    type="hidden"  value="796971">
+    <input name="accountId"     type="hidden"  value="803904">
+    <input name="description"   type="hidden"  value="Factura No:{{ factura?.numero }}"  >
+    <input name="referenceCode" type="hidden"  value="{{oferta?._id}}" >
+    <input name="amount"        type="hidden"  value="{{oferta?.valorOferta}}"   >
+    <input name="tax"           type="hidden"  value="0"  >
+    <input name="taxReturnBase" type="hidden"  value="0" >
+    <input name="currency"      type="hidden"  value="COP">
+    <input name="signature"     type="hidden"  value="{{signature}}"  >
+    <input name="test"          type="hidden"  value="1" >
+    <input name="buyerEmail"    type="hidden"  value="{{email}}" >
+    <input name="responseUrl"    type="hidden"  value="http://www.test.com/response" >
+    <input name="confirmationUrl"    type="hidden"  value="http://www.test.com/confirmation" >
+    <input name="Submit"        type="submit"  value="Enviar" >
+  </form>
+
+
+    </div>
+
+
+
+
+  </div>
+
+
+</div>
