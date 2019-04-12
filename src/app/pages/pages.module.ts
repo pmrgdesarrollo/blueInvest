@@ -35,6 +35,7 @@ import { UsuarioComponent } from './usuario/usuario.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { FotograndeComponent } from './fotogrande/fotogrande.component';
 import { EmpresasComponent } from './empresas/empresas.component';
+import { EmpresaComponent } from './empresa/empresa.component';
 
 
 
@@ -81,6 +82,7 @@ import { EmpresasComponent } from './empresas/empresas.component';
                    UsuarioComponent,
                    FotograndeComponent,
                    EmpresasComponent,
+                   EmpresaComponent,
                 ],
 
                    bootstrap:    [ ]

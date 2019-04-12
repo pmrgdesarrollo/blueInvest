@@ -32,7 +32,7 @@
 </h3>
 
 <h5>
-    Valor: <small>{{ oferta?.valorOferta | currency:'COP':'$' }}</small> 
+    Valor: <small>{{ precioFinal | currency:'COP':'$' }}</small> 
   </h5>
   <h5>
     usuario: <small>{{ oferta?.usuario.email }}</small> 
@@ -52,7 +52,7 @@
     <input name="accountId"     type="hidden"  value="803904">
     <input name="description"   type="hidden"  value="Factura No:{{ factura?.numero }}"  >
     <input name="referenceCode" type="hidden"  value="{{oferta?._id}}" >
-    <input name="amount"        type="hidden"  value="{{oferta?.valorOferta}}"   >
+    <input name="amount"        type="hidden"  value="{{ precioFinal }}"   >
     <input name="tax"           type="hidden"  value="0"  >
     <input name="taxReturnBase" type="hidden"  value="0" >
     <input name="currency"      type="hidden"  value="COP">

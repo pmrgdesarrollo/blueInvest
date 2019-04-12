@@ -30,6 +30,8 @@ export class PagarComponent implements OnInit {
   ref;
   precio;
 
+  precioFinal;
+
   currency = 'COP';
 
   signature;
@@ -53,6 +55,7 @@ export class PagarComponent implements OnInit {
   this._oferta.obtenerOferta( this.idOferta ).subscribe( oferta => { this.oferta = oferta ;
   this.ref = oferta._id;
   this.precio = oferta.valorOferta;
+  if ( oferta.fraccion > 0 ) { this.precioFinal = this.oferta.fraccion ; } else { this.precioFinal = this.oferta.valorOferta ; }
   console.log( this.ref );
   console.log( this.precio );
   const md5 = Md5.init(`${this.ApiKey}~${this.merchantId}~${this.ref}~${this.precio}~${this.currency}`);

@@ -7,7 +7,7 @@
         <table class="table-hover table-responsibe table-sm table m-0">
             <thead class="text-left">
                 <tr>
-                    <th scope="col">Pagador: {{ factura?.pagador }} </th>
+                    <th scope="col"> Pagador: {{ factura?.pagador }} </th>
                     <th scope="col">descontador: {{ factura?.descontador}} </th>
                     <th scope="col">Valor: {{ factura?.valor | currency:'COP':'$' }}</th>
                     <th scope="col">Vence: {{ factura?.vencimiento | date:'short' }}</th>

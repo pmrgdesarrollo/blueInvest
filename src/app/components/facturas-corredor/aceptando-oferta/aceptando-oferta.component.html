@@ -7,7 +7,8 @@
   </h2>
   <div>
     <h2> <small>numero: {{ oferta?._id }}</small>  </h2>
-    <h2> <small>valor: {{ oferta?.valorOferta | currency }} </small> </h2>
+    <h2> <small>valor inicial : {{ oferta?.valorOferta | currency }} </small> </h2>
+    <h2 *ngIf='oferta?.fraccion > 0' > <small>valor Aceptado: {{ oferta?.fraccion| currency }} </small> </h2>
     <h2> <small>tasa: {{ oferta?.tasaOferta }}%</small>  </h2>
   </div>
 

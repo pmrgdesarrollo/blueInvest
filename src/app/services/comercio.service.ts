@@ -29,6 +29,28 @@ export class ComercioService {
                                                         );
                   }
 
+                  cargardeaUnaEmpresa( desde: Number = 0 ) {
+
+                    const url = URL_SERVICIOS + '/comercio/una' ;
+                    return this.http.get( url ).pipe(
+                                                      map( (resp: any) => {
+                                                      this.totalEmpresas = resp.total;
+                                                      return resp.empresas;
+                                                      })
+                                                      );
+                }
+
+                cargarTodasLasEmpresas() {
+
+                  const url = URL_SERVICIOS + '/comercio/todas' ;
+                  return this.http.get( url ).pipe(
+                                                    map( (resp: any) => {
+                                                    this.totalEmpresas = resp.total;
+                                                    return resp.empresas;
+                                                    })
+                                                    );
+              }
+
                   obtenerEmpresa( id: string ) {
                   const url = URL_SERVICIOS + '/comercio/' + id;
                   return this.http.get( url ).pipe(

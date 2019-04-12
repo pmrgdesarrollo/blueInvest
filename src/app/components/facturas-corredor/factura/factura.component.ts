@@ -79,8 +79,11 @@ fraccion;
   this.ofertaShortcut = this.ofertas.length ;
   // tslint:disable-next-line:forin
   for ( const oferta in this.ofertas ) {  const aprobada = this.ofertas[oferta].estado ; console.log( aprobada );
+  const Aprobadafraccion = this.ofertas[oferta].fraccion;
   this.oferta = this.ofertas[oferta];
   if ( aprobada === true ) { this.recaudado.push( this.ofertas[oferta].valorOferta ) ; this.aprobadas.push( this.ofertas[oferta] ); }
+  if ( Aprobadafraccion > 0 ) { this.recaudado.push( this.ofertas[oferta].fraccion ) ; this.aprobadas.push( this.ofertas[oferta] );  }
+
   } console.log( this.recaudado );
   let total = 0;
   for ( let i = 0 ; i < this.recaudado.length ; i ++  ) {
@@ -135,6 +138,7 @@ if ( this.total >= this.precio ) { swal( 'Imposible!!!', ' la factura esta llena
 if ( valorOferta + this.total > this.factura1.valor ) {
 swal( 'Monto exedido!!!', ' el valor de la oferta supera el monto maximo, intenta aceptando una fracción' , 'warning'  ); return; } else {
 this._oferta.actualizarOferta( oferta , _id ).subscribe( editada => {
+swal( 'Oferta Aceptada!!!', 'puedes liberar el pago cuando se complete la factura' , 'success'  );
 console.log( editada ) ;
 });
 }
@@ -148,17 +152,18 @@ aceptarFraccion( valorOferta , tasaOferta , usuarioFactura , factura , estado , 
 
   const oferta = new Oferta(
 
-    valorOferta = this.fraccion,
+    valorOferta,
     tasaOferta ,
     usuarioFactura ,
     factura ,
-    estado = true,
+    estado = false,
     liberada = false,
     fraccion = this.fraccion,
     _id , );
 
 if ( this.total >= this.precio ) { swal( 'Imposible!!!', ' la factura esta llena ' , 'warning'  ); return; } else {
 this._oferta.actualizarOferta( oferta , _id ).subscribe( editada => {
+swal( 'Fraccion Aceptada!!!', 'puedes liberar el pago cuando se complete la factura' , 'success'  );
 console.log( editada ) ;
 });
 }
@@ -177,9 +182,9 @@ liberarFactura( valorOferta , tasaOferta , usuarioFactura , factura , estado , l
                       tasaOferta ,
                       usuarioFactura ,
                       factura ,
-                      estado = true  ,
+                      estado ,
                       liberada = true,
-                      fraccion = this.fraccion,
+                      fraccion ,
                       _id , );
 
   this._oferta.liberarOferta( oferta , _id ).subscribe( editada => {
@@ -201,7 +206,7 @@ liberarFactura( valorOferta , tasaOferta , usuarioFactura , factura , estado , l
       factura ,
       estado = false ,
       liberada = false,
-      fraccion = this.fraccion,
+      fraccion = 0,
       _id , );
 
       this._oferta.actualizarOferta( oferta , _id ).subscribe( editada => {

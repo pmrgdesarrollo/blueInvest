@@ -8,6 +8,8 @@ import { PagadorService } from '../../services/pagador.service';
 import { Descontador } from '../../models/descontador.model';
 import { DescontadorService } from '../../services/descontador.service';
 import { ModalPublicarFacturaService } from '../../services/modal-publicar-factura.service';
+import { Comercio } from 'src/app/models/comercio.model';
+import { ComercioService } from 'src/app/services/comercio.service';
 
 
 
@@ -112,7 +114,10 @@ export class PublicarOfertaComponent implements OnInit {
 
   descontadores: Descontador[] = [];
 
+  empresas: Comercio[] = [] ;
+
   constructor( public modal: ModalPublicarFacturaService,
+               private _empresas: ComercioService,
                private _facturaService: FacturasService ,
                private _pagagorService: PagadorService,
                private _descontadorDervice: DescontadorService,
@@ -126,6 +131,7 @@ ngOnInit() {
   this.cargarFacturas();
   this.cargarPagadores();
   this.cargarDescontadores();
+  this.cargarEmpresas();
 
     this.forma = new FormGroup( {
     pagador: new FormControl( null , Validators.required ),
@@ -157,6 +163,16 @@ this._pagagorService.cargarPagador().subscribe( pagadores => {
   this.pagadores = pagadores ;
   console.log( 'pagadores cargados' , this.pagadores ) ; } );
 }
+
+cargarEmpresas() {
+
+this._empresas.cargarTodasLasEmpresas( ).subscribe( (data: any) => { this.empresas = data ;
+console.log(data ); } );
+
+
+
+}
+
 
 cargarFacturas() {
 this._facturaService.cargarFactura()

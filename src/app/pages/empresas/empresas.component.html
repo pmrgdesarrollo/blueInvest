@@ -51,9 +51,9 @@
                             <td> {{ empresa.direccion }} </td>
                             <td> {{ empresa.telefono }} </td>
                             <td>
-                                <button class="btn btn-outline-primary" >
-                                    <i class="fa fa-info" ></i>
-                                </button>
+
+                                    <button type="submit" (click)="verEmpresa( empresa._id )" class="btn btn-outline-primary"><i class="fa fa-info" ></i>Ver</button>
+
                             </td>
                         </tr>
                     </tbody>

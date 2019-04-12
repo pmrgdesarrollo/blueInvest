@@ -24,12 +24,13 @@ export class AceptandoOfertaComponent implements OnInit {
   ngOnInit() {
     this.obtenerOferta();
     this.forma = new FormGroup( {
-      valorOferta: new FormControl( null , Validators.required ),
-      tasaOferta: new FormControl( null ,  Validators.required  ),
-      usuarioFactura: new FormControl( null ,  Validators.required  ),
-      factura: new FormControl( null ,  Validators.required  ),
-      estado: new FormControl( false ,  Validators.required  ),
-      liberada: new FormControl( false ,  Validators.required  ),
+      valorOferta: new FormControl(),
+      tasaOferta: new FormControl(),
+      usuarioFactura: new FormControl(),
+      factura: new FormControl(),
+      estado: new FormControl(),
+      liberada: new FormControl(),
+      fraccion: new FormControl(),
       nombre: new FormControl( null ,  Validators.required  ),
       cuenta: new FormControl( null  ,  Validators.required  ),
       banco: new FormControl( null  ,  Validators.required  ),
@@ -48,13 +49,14 @@ export class AceptandoOfertaComponent implements OnInit {
 
     console.log(forma.value);
 
-    const oferta = new Oferta(
+const oferta = new Oferta(
 this.oferta.valorOferta,
 this.oferta.tasaOferta,
 this.oferta.usuarioFactura,
 this.oferta.factura,
-this.oferta.estado,
-this.oferta.liberada,
+this.oferta.estado ,
+this.oferta.liberada = true ,
+this.oferta.fraccion,
 this.forma.value.nombre,
 this.forma.value.cuenta,
 this.forma.value.banco,

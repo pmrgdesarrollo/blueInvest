@@ -44,6 +44,68 @@ app.get('/', (req, res, next) => {
                     });
     });
 
+    /*=================================================
+        OBTENER TOODA LISTA DE EMPRESAS ( GET )
+=================================================*/
+app.get('/todas', (req, res, next) => {
+
+
+        Comercio.find({}, 'nombre_de_establecimiento actividad nit direccion telefono').exec(
+                (err, empresas) => {
+    
+                    if (err) {
+                        return res.status(500).json({
+                            ok: false,
+                            mensaje: 'Error cargando empresas',
+                            errors: err
+                        });
+                    }
+
+                    Comercio.count( {} , ( error , conteo  ) => { 
+                        
+                        res.status(200).json({
+                            ok: true,
+                            empresas: empresas,
+                            total: conteo,
+                        });
+
+                       }) 
+                    });
+    });
+
+/*=================================================
+        OBTENER LISTA DE A UNA EMPRESAS ( GET )
+=================================================*/
+app.get('/una', (req, res, next) => {
+
+    var desde = req.query.desde || 0 ;
+    desde = Number(desde);
+
+        Comercio.find({}, 'nombre_de_establecimiento actividad nit direccion telefono').
+        skip( desde ).limit(1)
+            .exec(
+                (err, empresas) => {
+    
+                    if (err) {
+                        return res.status(500).json({
+                            ok: false,
+                            mensaje: 'Error cargando empresas',
+                            errors: err
+                        });
+                    }
+
+                    Comercio.count( {} , ( error , conteo  ) => { 
+                        
+                        res.status(200).json({
+                            ok: true,
+                            empresas: empresas,
+                            total: conteo,
+                        });
+
+                       }) 
+                    });
+    });
+
 /*=================================================
         OBTENER UNA EMPRESA ( GET )
 =================================================*/

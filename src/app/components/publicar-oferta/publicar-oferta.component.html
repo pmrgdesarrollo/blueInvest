@@ -24,8 +24,8 @@
                                 <div class="form-group col-12 p-0">
                                     <select class="form-control form-control-sm " formControlName="pagador">
                                      <option selected>Selecciona un Pagador registrado</option>
-                                     <option *ngFor=" let p of pagadores ; index as i "
-                                     [value]=" p.nombre " required > {{ p.nombre }} </option></select>
+                                     <option *ngFor="let p of empresas ; index as i "
+                                     [value]="p.nombre_de_establecimiento" required > {{ p.nombre_de_establecimiento }} </option></select>
                                 </div>
                             </div>
 
@@ -34,8 +34,8 @@
                                 <div class="form-group col-12 p-0">
                                     <select class="form-control form-control-sm " formControlName="descontador">
                                     <option selected>Selecciona un descontador registrado</option>
-                                    <option *ngFor=" let s of descontadores ; index as i "
-                                    [value]=" s.nombre " required > {{ s.nombre }} </option>
+                                    <option *ngFor="let s of empresas ; index as i "
+                                    [value]="s.nombre_de_establecimiento" required > {{ s.nombre_de_establecimiento }} </option>
                         </select>
                                 </div>
                             </div>

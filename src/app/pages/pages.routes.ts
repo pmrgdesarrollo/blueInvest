@@ -24,6 +24,7 @@ import { DescontadorComponent } from './descontador/descontador.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { EmpresasComponent } from './empresas/empresas.component';
+import { EmpresaComponent } from './empresa/empresa.component';
 
 
 
@@ -39,6 +40,7 @@ const pagesRoutes: Routes = [
     { path: 'pagador/:id' , component: PagadorComponent},
     { path: 'descontadores' , component: DescontadoresComponent},
     { path: 'empresas' , component: EmpresasComponent},
+    { path: 'empresa/:id' , component: EmpresaComponent},
     { path: 'descontador/:id' , component: DescontadorComponent},
     { path: 'usuarios' , component: UsuariosComponent },
     { path: 'usuario/:id' , component:  UsuarioComponent },

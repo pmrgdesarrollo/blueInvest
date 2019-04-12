@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Comercio } from 'src/app/models/comercio.model';
 import { ComercioService } from 'src/app/services/comercio.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-empresas',
@@ -15,7 +16,7 @@ export class EmpresasComponent implements OnInit {
 
   cargando = false ;
 
-  constructor( private _empresas: ComercioService ) {
+  constructor( private _empresas: ComercioService , private ruta: Router ) {
 
   }
 
@@ -58,6 +59,13 @@ buscarEmpresa(termino: string) {
 
   });
 
+
+}
+
+verEmpresa( id ) {
+
+this._empresas.obtenerEmpresa( id ).subscribe( data => { console.log( data ) ;
+return this.ruta.navigate(['/empresa' , id ]) ; });
 
 }
 

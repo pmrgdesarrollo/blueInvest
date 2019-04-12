@@ -9,12 +9,63 @@
         <app-breadcrumbs rol='corredor' [texto]='textoBreadcrumbs'></app-breadcrumbs>
 
         <div class="row-12">
-<div class="col-lg-6 d-inline-block">
+   <!--    <div class="col-lg-6 d-inline-block">
         <app-ingresar-pagador></app-ingresar-pagador>
     </div>
     <div class="col-lg-6 d-inline-block">
         <app-ingresar-descontador></app-ingresar-descontador>
+</div>  -->
+
+
+    <h3> <small>Consulta las empresas</small> </h3>
+<div class="col-12">
+<div class="card">
+<div class="card-body">
+<input #input (keyup)="buscarEmpresa(input.value)" type="text" class="form-control" placeholder="Buscar Empresa"  >
+</div>
+</div>
+</div>
+
+
+        <div class="col-12">
+
+        <div class="card p-0" *ngIf='empresas.length >= 1' >
+            <div class="card-body p-0">
+
+                <table class="table table-sm table-hover"  >
+
+                    <thead  >
+                        <tr>
+               
+                            <th>Nombre de la empresa</th>
+                            <th>Nit</th>
+                            <th>actividad</th>
+                            <th>dirección</th>
+                            <th>telefono</th>
+                            <th> <strong>Ver</strong> </th>
+                        </tr>
+                    </thead>
+                    <tbody  >
+                        <tr *ngFor="let empresa of empresas ; index as i">
+                     
+                            <td> {{ empresa.nombre_de_establecimiento }} </td>
+                            <td> {{ empresa.nit }} </td>
+                            <td> {{ empresa.actividad }} </td>
+                            <td> {{ empresa.direccion }} </td>
+                            <td> {{ empresa.telefono }} </td>
+                            <td>
+                                    <button type="submit" (click)="verEmpresa( empresa._id )" class="btn btn-outline-primary"><i class="fa fa-info" ></i>Ver</button>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
     </div>
+
+
 
     </div>
 
