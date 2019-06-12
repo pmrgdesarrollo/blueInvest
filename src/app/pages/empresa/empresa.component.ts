@@ -31,7 +31,7 @@ export class EmpresaComponent implements OnInit {
   usuarios = 0;
   total = 0;
 
-
+activos2016;
 
   datachart = [
     { data: [  , ,  ], label: 'Activos' },
