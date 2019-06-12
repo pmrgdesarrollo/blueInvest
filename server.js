@@ -4,10 +4,10 @@ const path = require('path');
 
 const app = express();
 
-app.use(express.static(__dirname + '/dist/landing1'));
+app.use(express.static(__dirname + '/dist/abakoadv'));
 
 app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname + '/dist/landing1/index.html'))
+    res.sendFile(path.join(__dirname + '/dist/abakoadv/index.html'))
 });
 
 app.listen(process.env.PORT || 8080);
