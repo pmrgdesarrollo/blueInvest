@@ -38,12 +38,11 @@ app.use(bodyParser.json());
 // Conexión a la base de datos
 
 
-mongoose.connect('mongodb+srv://blauvest:Blauvest2019@blauvest-xbz2s.mongodb.net/test?retryWrites=true&w=majority',{useCreateIndex: true, useNewUrlParser: true } )
+mongoose.connect('mongodb+srv://blauvest1:sFlTkynEjQTl6mcV@blauvest-xbz2s.mongodb.net/test?retryWrites=true&w=majority',{useCreateIndex: true, useNewUrlParser: true } )
 .then( ( bd ) => {
     console.log('Base de datos: \x1b[32m%s\x1b[0m', 'online');
 })
 .catch( err => console.log( err) ) ; 
-
 
 
 // MIDLEWARES
