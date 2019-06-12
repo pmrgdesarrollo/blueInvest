@@ -60,7 +60,7 @@ cargarStorage() {
 
 // REGISTRAR UN USUARIO
 crearUsuario( usuario: Usuario ) {
-const url = URL_SERVICIOS + '/usuario';
+const url = '/usuario';
 return this._http.post( url , usuario ).pipe(
 map( (resp: any) => {
 swal( 'Usuario creado correctamente' , usuario.email , 'success'  );
@@ -78,7 +78,7 @@ loginService( usuario: Usuario , recordame: boolean = false  ) {
   localStorage.removeItem( 'email');
   }
 
-const url = URL_SERVICIOS + '/login';
+const url = '/login';
 return this._http.post( url , usuario ).pipe(
 
   map( (resp: any ) => {
@@ -111,7 +111,7 @@ guardarStorage( id: string, token: string, usuario: Usuario ) {
 
 loginGoogle( token: string ) {
 
-  const url = URL_SERVICIOS + '/login/google';
+  const url = '/login/google';
 
   return this._http.post( url, { token } ).pipe(
                 map( (resp: any) => {
@@ -123,7 +123,7 @@ loginGoogle( token: string ) {
 }
 
 buscarUsuario( id: string ) {
-const url = URL_SERVICIOS + '/usuario/' + id;
+const url = '/usuario/' + id;
 return this._http.get( url ).pipe(
 map( (resp: any) => {
 console.log( resp.usuario );
@@ -137,7 +137,7 @@ return resp.usuario;
 
 cargarUsuario() {
 
-  const url = URL_SERVICIOS + '/usuario';
+  const url = '/usuario';
   return this._http.get( url ).pipe(
                                    map( (resp: any) => {
                                    console.log(resp.usuarios);
