@@ -6,36 +6,22 @@ import { URL_SERVICIOS } from '../config/config';
 })
 export class ImagenPipe implements PipeTransform {
 
-  transform(  img: string, tipo: string = 'facturas' ): any {
+
+  transform( img: string, tipo: string = 'factura' ): any {
 
     let url = URL_SERVICIOS + '/img';
 
+    url += '/facturas/' + img;
+
     if ( !img ) {
-      return url + '/facturas/xxx';
+      return url + '/factura/xxx';
     }
 
     if ( img.indexOf('https') >= 0 ) {
       return img;
     }
 
-    switch ( tipo ) {
 
-      case 'facturas':
-        url += '/facturas/' + img;
-      break;
-
-      case 'pagadores':
-        url += '/pagadores/' + img;
-      break;
-
-      case 'descontadores':
-         url += '/descontadores/' + img;
-      break;
-
-      default:
-        console.log('tipo de imagen no existe, facturas, pagadores , descontadores');
-        url += '/usurios/xxx';
-    }
 
     return url;
   }

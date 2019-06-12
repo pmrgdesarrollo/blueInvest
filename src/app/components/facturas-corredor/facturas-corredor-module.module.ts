@@ -15,6 +15,7 @@ import { FacturaComponent } from './factura/factura.component';
 import { PipesModule } from '../../pipes/pipes.module';
 import { FotoComponent } from './foto/foto.component';
 import { AceptandoOfertaComponent } from './aceptando-oferta/aceptando-oferta.component';
+import { ConfirmantePagoComponent } from './confirmante-pago/confirmante-pago.component';
 
 
 
@@ -26,6 +27,7 @@ import { AceptandoOfertaComponent } from './aceptando-oferta/aceptando-oferta.co
                     PublicadasComponent,
                     HistoricoComponent,
                     FacturaComponent,
+                    ConfirmantePagoComponent,
                     FotoComponent],
 
                     exports: [

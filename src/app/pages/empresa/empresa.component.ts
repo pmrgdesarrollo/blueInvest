@@ -6,12 +6,19 @@ import { ComentarioService } from 'src/app/services/comentarios.service';
 import { FormControl , FormGroup , Validators  } from '@angular/forms';
 import { Comentario } from 'src/app/models/comentario.model';
 
+
+
+
+
+
 @Component({
   selector: 'app-empresa',
   templateUrl: './empresa.component.html',
   styleUrls: ['./empresa.component.css']
 })
 export class EmpresaComponent implements OnInit {
+
+
 
   id;
 
@@ -24,9 +31,19 @@ export class EmpresaComponent implements OnInit {
   usuarios = 0;
   total = 0;
 
+
+
+  datachart = [
+    { data: [  , ,  ], label: 'Activos' },
+    { data: [ , ,  ], label: 'Pasivos' }
+  ];
+
+
   constructor( private ruta: ActivatedRoute  , private _empresa: ComercioService ,  private comentarioService: ComentarioService  ) {
     this.ruta.params.subscribe( params => this.id = params['id']  );
     console.log( this.id );
+
+
    }
 
   ngOnInit() {
@@ -38,11 +55,23 @@ this.forma = new FormGroup( {
   pagador: new FormControl( null ,  Validators.required  ),
                                },
                                );
+
+this.obtenerMisComentarios();
+this.rating();
+
   }
 
   obtenerEmpresa() {
-    this._empresa.obtenerEmpresa( this.id ).subscribe( empresa => {this.empresa = empresa ;
-    console.log( this.empresa ); } );
+this._empresa.obtenerEmpresa( this.id ).subscribe( ( empresa: any ) => {this.empresa = empresa ;
+this.datachart[1][0] = empresa.activos2016;
+this.datachart = [ {data: [ parseFloat(empresa.activos2016) , parseFloat(empresa.activos2017) , parseFloat(empresa.activos2018)  ]
+      , label: 'Activos'},
+{data: [ parseFloat(empresa.pasivos2016) , parseFloat(empresa.pasivos2017) , parseFloat(empresa.pasivos2018)   ], label: 'Pasivos'}
+];
+
+console.log( this.datachart[1][0]);
+
+    } );
   }
 
   obtenerMisComentarios( ) {
@@ -77,5 +106,7 @@ this.forma = new FormGroup( {
     );
     this.comentarioService.crearComentario( comentario ).subscribe( data => console.log(data) );
     }
+
+
 
 }

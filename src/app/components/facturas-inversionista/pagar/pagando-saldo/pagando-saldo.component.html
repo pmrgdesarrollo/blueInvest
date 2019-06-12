@@ -1,0 +1,34 @@
+
+
+
+<div class="row mt-4">
+
+    <div class="col-3 text-center">
+
+
+    
+        </div>
+
+
+  <div class="col-6 text-center">
+
+    <div class="card">
+        <h5 class="card-header text-dark"> Tu saldo disponible total es {{ saldoOficial | currency }}</h5>
+        <div class="card-body">
+          <h5 class="card-title">Vas a invertir: {{ precioFinal | currency }}  </h5>
+          <p class="card-text">Este valor se restara de tu saldo en Blauvest, pasara a invertido.</p>
+          <button (click)="invertir()" class="btn btn-primary" >Ivertir</button> 
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-3 text-center">
+
+
+    
+      </div>
+
+</div>
+
+

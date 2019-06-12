@@ -1,72 +1,133 @@
 <div class="container">
 
-  <h2> hacer el pago! </h2>
+
 
   <div class="row">
 
-    <div class="col-6">
+  <div class="col-6 mt-3">
 
-      <h3>
-        Factura : <small>{{ factura?._id }}</small> 
-      </h3>
+      <h6> hacer el pago! </h6>
 
-      <img [src]="factura?.docs|imagen" class="w-50  mt-1 mb-1 imagen">
+    <div class="row">
 
-      <h5>
-        Pagador: <small>{{ factura?.pagador}}</small> 
-      </h5>
-      <h5>
-        Descontador: <small>{{ factura?.descontador }}</small> 
-      </h5>
-      <h5>
-        Paga en : <small>{{ factura?.plazo}} dias </small> 
-      </h5>
+      <div class="col-6">
+          <h6>
+              Factura : <small>{{ factura?._id }}</small> 
+            </h6>
       
+            <h6>
+             Mi oferta: <small>{{ oferta?._id }}</small> 
+           </h6>
+      
+           <h6>
+              Valor aprobado: <small>{{ precioFinal | currency:'COP':'$' }}</small> 
+            </h6>
 
-    </div>
+            <h6>
+                Pagador: <small>{{ factura?.pagador}}</small> 
+              </h6>
+              <h6>
+                Descontador: <small>{{ factura?.descontador }}</small> 
+              </h6>
+              <h6>
+                Paga en : <small>{{ factura?.plazo}} dias </small> 
+              </h6>
+
+              <hr>
+
+              <h5>
+                  usuario: <small>{{ oferta?.usuario.nombre }}</small> 
+                </h5>
+                <h5>
+                   Banco: <small>{{ oferta?.banco}}</small> 
+                </h5>
+                <h5>
+                   Tipo de cuenta: <small>{{ oferta?.tipo }}</small> 
+               </h5>
+                <h5>
+                   No cuenta: <small>{{ oferta?.cuenta}}</small> 
+                </h5>
+              
+
+      </div>
+
+<div class="col-6">
+    <img [src]="factura?.docs|imagen" class="w-100  mt-1 mb-1 imagen">
+</div>
+</div>
+   
+  </div>  
+
 
     <div class="col-6">
 
-<h3>
-  Oferta: <small>{{ oferta?._id }}</small> 
-</h3>
+      <div class="container">
 
-<h5>
-    Valor: <small>{{ precioFinal | currency:'COP':'$' }}</small> 
-  </h5>
-  <h5>
-    usuario: <small>{{ oferta?.usuario.email }}</small> 
-  </h5>
-  <h5>
-     Banco: <small>{{ oferta?.banco}}</small> 
-  </h5>
-  <h5>
-     Tipo de cuenta: <small>{{ oferta?.tipo }}</small> 
- </h5>
-  <h5>
-     No cuenta: <small>{{ oferta?.cuenta}}</small> 
-  </h5>
+      <h4 class="mt-3">
+         Opciones de pago
+      </h4>
 
-  <form method="post" action="https://checkout.payulatam.com/ppp-web-gateway-payu/">
-    <input name="merchantId"    type="hidden"  value="796971">
-    <input name="accountId"     type="hidden"  value="803904">
-    <input name="description"   type="hidden"  value="Factura No:{{ factura?.numero }}"  >
-    <input name="referenceCode" type="hidden"  value="{{oferta?._id}}" >
-    <input name="amount"        type="hidden"  value="{{ precioFinal }}"   >
-    <input name="tax"           type="hidden"  value="0"  >
-    <input name="taxReturnBase" type="hidden"  value="0" >
-    <input name="currency"      type="hidden"  value="COP">
-    <input name="signature"     type="hidden"  value="{{signature}}"  >
-    <input name="test"          type="hidden"  value="1" >
-    <input name="buyerEmail"    type="hidden"  value="{{email}}" >
-    <input name="responseUrl"    type="hidden"  value="http://www.test.com/response" >
-    <input name="confirmationUrl"    type="hidden"  value="http://www.test.com/confirmation" >
-    <input name="Submit"        type="submit"  value="Enviar" >
-  </form>
+<div class="row mt-3">
+  <div class="col-12">
+  <div class="card text-center">
+      <h5 class="text-black-50 mt-2"> Pagar con pay U </h5>
+  <div class="card-body">
+      <form method="post" action="https://checkout.payulatam.com/ppp-web-gateway-payu/">
+        <input name="merchantId"    type="hidden"  value="796971">
+        <input name="accountId"     type="hidden"  value="803904">
+        <input name="description"   type="hidden"  value="Factura No:{{ factura?.numero }}"  >
+        <input name="referenceCode" type="hidden"  value="{{oferta?._id}}" >
+        <input name="amount"        type="hidden"  value="{{ precioFinal }}"   >
+        <input name="tax"           type="hidden"  value="0"  >
+        <input name="taxReturnBase" type="hidden"  value="0" >
+        <input name="currency"      type="hidden"  value="COP">
+        <input name="signature"     type="hidden"  value="{{signature}}"  >
+        <input name="test"          type="hidden"  value="1" >
+        <input name="buyerEmail"    type="hidden"  value="{{email}}" >
+        <input name="responseUrl"    type="hidden"  value="http://www.test.com/response" >
+        <input name="confirmationUrl"    type="hidden"  value="http://www.test.com/confirmation" >
+        <input name="Submit"        type="submit"  value="Enviar" >
+      </form>
+  </div>
+  </div>
+  </div>
+</div>
+
+<div class="row mt-2">
+      <div class="col-12">
+      <div class="card text-center">
+      <h5 class="text-black-50 mt-2"> Usar mi saldo disponible </h5>
+      <div class="card-body">
+      <button class="btn btn-info col-12" (click)="saldo( oferta?.fechaOferta , oferta?.valorOferta , oferta?.tasaOferta ,
+       oferta?.usuarioFactura , oferta?.factura , oferta?.facturaValor , oferta?.facturaFechaPago , oferta?.estado , oferta?.liberada , oferta?.fraccion , 
+       oferta?.nombre , oferta?.cuenta , oferta?.banco , oferta?.tipo , oferta?.pagando, oferta?.payU ,
+       oferta?.conSaldo , oferta?.transferencia , oferta?.pagoConfirmado , oferta?.pagoFecha , oferta?.docsOf , oferta?.utilidad , oferta?._id )"   value="Enviar" > ir a mi saldo </button>
+      </div>
+      </div>
+      </div>
+</div>
+
+
+<div class="row mt-2">
+<div class="col-12">
+<div class="card text-center">
+<h5 class="text-black-50 mt-2"> Hacer transferencia </h5>
+<div class="card-body">
+<button class="btn btn-primary col-12" (click)="transferencia( oferta?.fechaOferta , oferta?.valorOferta , oferta?.tasaOferta ,
+oferta?.usuarioFactura , oferta?.factura , oferta?.facturaValor , oferta?.facturaFechaPago , oferta?.estado , oferta?.liberada , oferta?.fraccion , 
+oferta?.nombre , oferta?.cuenta , oferta?.banco , oferta?.tipo , oferta?.pagando, oferta?.payU ,
+oferta?.conSaldo , oferta?.transferencia , oferta?.pagoConfirmado , oferta?.pagoFecha , oferta?.docsOf , oferta?.utilidad , oferta?._id )"  value="Enviar" > Transferencia Bancaria </button>
+           
+          </div>
+          </div>
+          </div>
+</div>
+
+
+</div>
 
 
     </div>
-
 
 
 

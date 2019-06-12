@@ -2,20 +2,21 @@
 
 <div class="container text-center ">
 
-  <h2>
+  <h6>
     Aceptaste la oferta!
-  </h2>
+  </h6>
   <div>
-    <h2> <small>numero: {{ oferta?._id }}</small>  </h2>
-    <h2> <small>valor inicial : {{ oferta?.valorOferta | currency }} </small> </h2>
-    <h2 *ngIf='oferta?.fraccion > 0' > <small>valor Aceptado: {{ oferta?.fraccion| currency }} </small> </h2>
-    <h2> <small>tasa: {{ oferta?.tasaOferta }}%</small>  </h2>
+   
+    <h4> <small>valor inicial oferta inicial : {{ oferta?.valorOferta | currency }} </small> </h4>
+    <h4 *ngIf='oferta?.fraccion > 0' > <small>valor que Aceptaste: {{ oferta?.fraccion| currency }} </small> </h4>
+    <h4> <small>tasa: {{ oferta?.tasaOferta }}%</small>  </h4>
   </div>
 
   <div class="container">
     <div class="form-group mt-0 borde  pr-3 pl-3">
   
-      <h2 class="letra mt-4 mb-0" > <small>envia tus datos al comprador</small></h2>
+      <h4 class="letra mt-4 mb-0" > <small>envia tus datos al comprador</small></h4>
+      <h6> <small>Si tienes datos por modificar puedes hacerlo , de lo contrario da click en enviar!</small>  </h6>
       <hr class="mt-1" >
         
       <form  [formGroup]='forma' (ngSubmit)="enviarDatos( forma )" >
@@ -42,11 +43,14 @@
         placeholder="banco"
         required>
   
-        <input class="col-md-4 col-lg-6 mb-2 mb-md-0 mb-lg-0 form-control form-control-sm"
-        formControlName="tipo" 
-        type="text"
-        placeholder="Tipo de cuenta"
-        required>
+       
+            <h3 class="mr-sm-2 sr-only" for="inlineFormCustomSelect"> Tipo de cuenta </h3>
+            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" formControlName="tipo"  >
+              <option selected>Tipo de cuenta...</option>
+              <option value="Ahorros">Ahorros</option>
+              <option value="Corriente">Corriente</option>
+             </select>
+     
   
         <button type="submit" class="col-sm-12 col-md-2 col-lg-12 mt-2 mb-2 btn btn-success btn-sm ">Enviar datos</button>
   

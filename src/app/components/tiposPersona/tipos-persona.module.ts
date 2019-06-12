@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+
+import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 
 import { TiposPersonaComponent } from './tipos-persona.component';
 
@@ -31,7 +32,8 @@ import { appRouting } from './tipos-persona.routes';
         CommonModule,
         BrowserModule,
         FormsModule,
-        appRouting , ],
+        appRouting ,
+        ReactiveFormsModule ],
 
   providers: [ ],
 

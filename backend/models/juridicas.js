@@ -45,8 +45,16 @@ var personaJuridicaSchema = new Schema({
                                   documentoA: { type: String, required: false},
                                   cargoA: { type: String, required: false},
                                   telefonoA: { type: String, required: false},
-                         
-                            
+// Documentos                         
+                                  doc1: { type: String, required: false},
+                                  doc2: { type: String, required: false},
+                                  doc3: { type: String, required: false},
+                                  doc4: { type: String, required: false},
+                              //    doc5: { type: String, required: false},
+// Aprobacion                                     
+                                  aprobado: {type: Boolean , required: false},
+
+                                  usuario: { type: Schema.Types.ObjectId, ref: 'Usuario' },
                                 
                                 },  
                                  { collection: 'juridicas' });

@@ -8,6 +8,7 @@ var app = express();
 
 //Para importar el modelo de usuarios
 var Natural = require( '../models/naturales');
+var Usuario = require('../models/usuario');
 
 
 /*=================================================
@@ -39,10 +40,9 @@ app.get('/', (req, res, next) => {
 /*=================================================
         AGREGAR USUARIO ( POST )
 =================================================*/           
-app.post( '/' ,  ( request , response ) => {  
+app.post( '/' , autenticacionToken.verificaToken , ( request , response ) => {  
 
-
-  var body = request.body ;
+var body = request.body ;
 
   var natural = new Natural ( {
                                   tipoSolicitante:body.tipoSolicitante, 
@@ -56,7 +56,7 @@ app.post( '/' ,  ( request , response ) => {
                                   ciudad: body.ciudad,
                                   telefono: body.telefono,
                                   dirCorrespondencia: body.dirCorrespondencia,
-                                  email: body.email,
+                                  ciudadOf: body.ciudadOf,
                                   celular: body.celular,
 //LA B es de beneficiario
                                   tipoB: body.tipoB,
@@ -70,7 +70,7 @@ app.post( '/' ,  ( request , response ) => {
                                   ciudadB: body.ciudadB,
                                   telefonoB: body.telefonoB,
                                   dirCorrespondenciaB: body.dirCorrespondenciaB,
-                                  emailB: body.emailB,
+                                  ciudadBof: body.emailB,
                                   celularB: body.celularB,
 
                                   profesion: body.profesion,
@@ -83,7 +83,16 @@ app.post( '/' ,  ( request , response ) => {
                                   entidad: body.entidad,
                                   tipo: body.tipo,
                                   numero: body.numero,
-                                  titular: body.titular
+                                  titular: body.titular,
+
+                                  doc1:body.doc1,
+                                  doc2:body.doc2,
+                                  doc3:body.doc3,
+                                  doc4:body.doc4,
+                               //   doc5:body.doc5,
+                                  aprobado:body.aprobado,
+                                  usuario:request.usuario._id,
+                             
                               } );
 
    natural.save( ( error , naturalGuardado  ) =>  { 
@@ -97,11 +106,12 @@ app.post( '/' ,  ( request , response ) => {
         
         ) ; }       
       
-       response.status(201).json(
+       response.status(200).json(
       
       { ok:true,
         naturalCreado: naturalGuardado,
-        usuarioLogueadoToken: request.usuario  }) ;
+        creadoPor: natural.usuario
+         }) ;
 
 } );                           
 
@@ -140,7 +150,7 @@ usuarioNatural.dirResidencia=body.dirCorrespondencia,
 usuarioNatural.ciudad=body.ciudad,
 usuarioNatural.telefono=body.telefono,
 usuarioNatural.dirCorrespondencia=body.dirCorrespondencia,
-usuarioNatural.email=body.email,
+usuarioNatural.ciudadOf=body.ciudadOf,
 usuarioNatural.celular=body.celular,
 
 usuarioNatural.tipoB=body.tipoB,
@@ -154,7 +164,7 @@ usuarioNatural.dirResidenciaB=body.dirCorrespondenciaB,
 usuarioNatural.ciudadB=body.ciudadB,
 usuarioNatural.telefonoB=body.telefonoB,
 usuarioNatural.dirCorrespondenciaB=body.dirCorrespondenciaB,
-usuarioNatural.emailB=body.emailB,
+usuarioNatural.ciudadBof=body.ciudadBof,
 usuarioNatural.celularB=body.celularB,
 
 usuarioNatural.profesion=body.profesion,
@@ -167,7 +177,16 @@ usuarioNatural.pasivos=body.pasivos,
 usuarioNatural.entidad=body.entidad,
 usuarioNatural.tipo=body.tipo,
 usuarioNatural.numero=body.numero,
-usuarioNatural.titular=body.titular
+usuarioNatural.titular=body.titular,
+
+usuarioNatural.doc1=body.doc1,
+usuarioNatural.doc2=body.doc2,
+usuarioNatural.doc3=body.doc3,
+usuarioNatural.doc4=body.doc4,
+// usuarioNatural.doc5=body.doc5,
+
+usuarioNatural.aprobado = body.aprobado,
+usuarioNatural.usuario = request.usuario._id;
 
 //luego guardamos el nuevo regsitro
 usuarioNatural.save( ( error , naturalEditado ) =>  { 

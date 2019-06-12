@@ -3,7 +3,8 @@
 
 
     <div class="col-sm-12 col-md-3 col-lg-3 m-0 p-0 mt-3">
-      <h4 class="title2 pl-1"> Mis Facturas </h4>
+      <h4 class="title2 pl-1"> Mis Ofertas: {{ misOfertas.length }} </h4>
+      <h5 class="title2 pl-1"> Mi Saldo: {{ saldo | currency }} + Utilidad </h5>
     </div>
     
     <div class="col-sm-12 col-md-9 col-lg-9 text-center pb-2 ">
@@ -31,9 +32,9 @@
     <table class="table-hover table-responsibe table-sm table m-0">
     <thead class="text-left letraResumen">
     <tr>
-    <th scope="col">Disponible:$ </th>
-    <th scope="col">Invertido:$ </th>
-    <th scope="col">Utilidad:$ </th>
+    <th scope="col">DISPONIBLE: {{ disponible | currency }} </th>
+    <th scope="col">INVERTIDO: {{ invertido | currency  }} </th>
+    <th scope="col">UTILIDAD TOTAL: {{ utilidad | currency }} </th>
     </tr>
     </thead> 
     </table>

@@ -15,7 +15,7 @@ export class ProtegerRutasGuard implements CanActivate {
 
   canActivate() {
 
-    if ( this._usuarioService.estalogueado ) {
+    if ( this._usuarioService.estalogueado() ) {
       console.log( 'PASO EL GUARD');
       return true;
     } else {

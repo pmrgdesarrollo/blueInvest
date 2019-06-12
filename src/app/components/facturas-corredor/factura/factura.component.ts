@@ -5,6 +5,7 @@ import { Factura } from 'src/app/models/factura.model';
 import { OfertaService } from '../../../services/oferta.service';
 import { Oferta } from 'src/app/models/oferta.model';
 import swal from 'sweetalert';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-factura',
@@ -32,6 +33,8 @@ precio;
 progresoTotal;
 minimo;
 
+diasRestantes;
+
 
 liberar;
 fraccion;
@@ -39,12 +42,13 @@ fraccion;
   constructor( private _facturaService: FacturasService , private _ruta: ActivatedRoute,
   private _oferta: OfertaService , private ruta: Router  ) {
   this._ruta.params.subscribe( params => this.id = params['id'] );
+  this.cargarOfertaSobreFactura();
+
    }
 
   ngOnInit() {
   this.cambiarestadoBoton();
   this.cargarFactura();
-  this.cargarOfertaSobreFactura();
 
   }
 
@@ -56,14 +60,26 @@ fraccion;
   this._facturaService.obtenerFactura( this.id ).subscribe( (data: any ) => {
   this.precio = data.valor;
   this.fraccion = this.precio - this.total;
+
+  const fecha1 = moment( data.publicacion );
+  const fecha2 = moment( data.disponible );
+
+  this.diasRestantes = fecha2.diff( fecha1 , 'days' );
+
   console.log( 'this.precio' , this.precio );
   console.log( 'this.fraccion' , this.fraccion );
   this.factura1 = data ;
   this.minimo = data.porcentaje ;
   this.progresoTotal = ( this.total * 100 / this.precio );
-  if ( this.progresoTotal < this.minimo ) { this.liberar = false ;  } else {  this.liberar = true; }
+
+  if ( this.progresoTotal < this.minimo ) {
+//    if ( this.progresoTotal !== Number  ) { this.progresoTotal = '0' ;  }
+
+    this.liberar = false ;  } else {  this.liberar = true; }
+
   console.log( 'progreso', this.progresoTotal );
     } );
+
   }
 
   cargarOfertaSobreFactura() {
@@ -73,9 +89,8 @@ fraccion;
   // this.ofertas = data;
   // tslint:disable-next-line:forin
    for ( const d in data  ) { this.ofertas.push( data[d] ) ;
-   console.log( data[d][0] ) ;
+   console.log( data[d][0] ) ; }
 
- }
   this.ofertaShortcut = this.ofertas.length ;
   // tslint:disable-next-line:forin
   for ( const oferta in this.ofertas ) {  const aprobada = this.ofertas[oferta].estado ; console.log( aprobada );
@@ -120,19 +135,23 @@ sortByTasa( v1: Oferta , v2: Oferta ) {
 
 }
 
-aceptar( valorOferta , tasaOferta , usuarioFactura , factura , estado , liberada , fraccion ,  _id   ) {
+aceptar( fechaOferta, valorOferta , tasaOferta , usuarioFactura , factura ,
+facturaValor , facturaFechaPago , estado , liberada , fraccion , _id  ) {
 console.log( 'valor:', valorOferta , 'tasa' , tasaOferta ,
-'usuario' ,  usuarioFactura , 'factura' , factura , 'estado' , estado , 'id' , _id );
+'usuario' ,  usuarioFactura , 'factura' , factura , 'estado' , estado , 'id' );
 const oferta = new Oferta(
-
+                    fechaOferta,
                     valorOferta ,
                     tasaOferta ,
                     usuarioFactura ,
                     factura ,
+                    facturaValor ,
+                    facturaFechaPago ,
                     estado = true,
                     liberada = false,
                     fraccion = 0,
-                    _id , );
+                    _id
+                   );
 
 if ( this.total >= this.precio ) { swal( 'Imposible!!!', ' la factura esta llena ' , 'warning'  ); return; }
 if ( valorOferta + this.total > this.factura1.valor ) {
@@ -143,19 +162,23 @@ console.log( editada ) ;
 });
 }
 
-
-location.reload();
+// location.reload();
 
 }
 
-aceptarFraccion( valorOferta , tasaOferta , usuarioFactura , factura , estado , liberada , fraccion ,  _id ) {
+aceptarFraccion( fechaOferta , valorOferta , tasaOferta , usuarioFactura , factura ,
+  facturaValor, facturaFechaPago , estado , liberada , fraccion ,  _id ) {
+
+  // estado , es la aprobacion del monto total , por eso si se aprueba fraccion , estado queda en false. //
 
   const oferta = new Oferta(
-
+    fechaOferta,
     valorOferta,
     tasaOferta ,
     usuarioFactura ,
     factura ,
+    facturaValor,
+    facturaFechaPago,
     estado = false,
     liberada = false,
     fraccion = this.fraccion,
@@ -169,19 +192,26 @@ console.log( editada ) ;
 }
 
 
-location.reload();
+// location.reload();
 
 }
 
-liberarFactura( valorOferta , tasaOferta , usuarioFactura , factura , estado , liberada , fraccion,  _id   ) {
+rechazar() {
+// poner un rechazada en el modelo
+}
+
+liberarFactura( fechaOferta , valorOferta , tasaOferta , usuarioFactura , factura ,
+  facturaValor , facturaFechaPago , estado , liberada , fraccion,  _id   ) {
   console.log( 'valor:', valorOferta , 'tasa' , tasaOferta ,
   'usuario' ,  usuarioFactura , 'factura' , factura , 'estado' , estado , 'id' , _id );
   const oferta = new Oferta(
-
+                      fechaOferta,
                       valorOferta ,
                       tasaOferta ,
                       usuarioFactura ,
                       factura ,
+                      facturaValor,
+                      facturaFechaPago,
                       estado ,
                       liberada = true,
                       fraccion ,
@@ -196,14 +226,17 @@ liberarFactura( valorOferta , tasaOferta , usuarioFactura , factura , estado , l
 
   }
 
-  retractarme(valorOferta , tasaOferta , usuarioFactura , factura , estado , liberada , fraccion , _id ) {
+  retractarme( fechaOferta , valorOferta , tasaOferta , usuarioFactura , factura ,
+    facturaValor , facturaFechaPago , estado , liberada , fraccion , _id ) {
 
     const oferta = new Oferta(
-
+      fechaOferta,
       valorOferta ,
       tasaOferta ,
       usuarioFactura ,
       factura ,
+      facturaValor,
+      facturaFechaPago,
       estado = false ,
       liberada = false,
       fraccion = 0,
@@ -213,7 +246,7 @@ liberarFactura( valorOferta , tasaOferta , usuarioFactura , factura , estado , l
       console.log( editada ) ;
 });
 
-  location.reload();
+ // location.reload();
 
 
   }

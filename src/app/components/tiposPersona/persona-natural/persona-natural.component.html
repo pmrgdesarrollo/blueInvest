@@ -1,7 +1,7 @@
 <div class="container mt-2">
         <h2><small>Persona Natural</small></h2><h4><small>Informacion personal</small></h4>
         
-<form  #formularioPersonaJuridica="ngForm">
+        <form [formGroup]='forma' (ngSubmit)="publicarDatos(forma)">
         
 <!--INFORMACION PERSONAL-->       
 <div class="container fondo p-2">
@@ -9,16 +9,16 @@
         <div class="row">
         
         <div class="form-group mb-1 col-sm-12 col-md-12 col-lg-3 ">
-        <select class="custom-select custom-select-sm">
-        <option selected="">Tipo de solicitante</option>
-        <option value="INVERSIONISTA">Titular</option>
-        <option value="CORREDOR">Beneficiario</option>
+        <select class="custom-select custom-select-sm" formControlName="tipoSolicitante" >
+        <option selected=""  >Tipo de solicitante</option>
+        <option value="titular">Titular</option>
+        <option value="beneficiario">Beneficiario</option>
         </select>
         </div>
         
         <div class="form-group mb-1  col-sm-12 col-md-12 col-lg-9">
         <input class="form-control form-control-sm"
-        name=""  
+        formControlName="nombre" 
         type="text" 
         placeholder="Nombre y apellido" 
         id="inputSmall">
@@ -30,7 +30,7 @@
         
         <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-8 ">
         <input class="form-control form-control-sm"
-        name=""  
+        formControlName="documento" 
         type="number" 
         placeholder="No Documento de identidad" 
         id="inputSmall">
@@ -38,7 +38,7 @@
         
         
         <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4">
-        <select class="custom-select custom-select-sm">
+        <select class="custom-select custom-select-sm"  formControlName="sexo" >
         <option selected="">sexo</option>
         <option value="INVERSIONISTA">Mujer</option>
         <option value="CORREDOR">hombre</option>
@@ -51,7 +51,7 @@
         
         <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4 ">
         <input class="form-control form-control-sm"
-        name="valorFactura"  
+        formControlName="nacimiento"  
         type="date" 
         placeholder="Fecha de nacimiento" 
         id="inputSmall">
@@ -59,14 +59,14 @@
         
         <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4 ">
         <input class="form-control form-control-sm"
-        name="valorFactura"  
+        formControlName="pais" 
         type="text" 
         placeholder="Pais de nacimiento" 
         id="inputSmall">
         </div>
         
         <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4">
-        <select class="custom-select custom-select-sm">
+        <select class="custom-select custom-select-sm"  formControlName="estadoCivil" >
         <option selected="">Estadi civil</option>
         <option value="Soltero">Soltero</option>
         <option value="Casado">Casado</option>
@@ -82,7 +82,7 @@
         
         <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-6">
         <input class="form-control form-control-sm"
-        name=""  
+        formControlName="dirResidencia" 
         type="text" 
         placeholder="direccion residencia" 
         id="inputSmall">
@@ -90,7 +90,7 @@
         
         <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
         <input class="form-control form-control-sm"
-        name=""  
+        formControlName="ciudad" 
         type="text" 
         placeholder="ciudad" 
         id="inputSmall">
@@ -98,7 +98,7 @@
         
         <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
         <input class="form-control form-control-sm"
-        name=""  
+        formControlName="telefono"  
         type="text" 
         placeholder="Telefono" 
         id="inputSmall">
@@ -110,7 +110,7 @@
                 
         <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-6">
         <input class="form-control form-control-sm"
-        name=""  
+        formControlName="dirCorrespondencia"  
         type="text" 
         placeholder="Direccion Oficina" 
         id="inputSmall">
@@ -118,7 +118,7 @@
                     
         <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
         <input class="form-control form-control-sm"
-        name=""  
+        formControlName="ciudadOf" 
         type="text" 
         placeholder="Ciudad" 
         id="inputSmall">
@@ -126,38 +126,9 @@
         
         <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
         <input class="form-control form-control-sm"
-        name=""  
+        formControlName="celular"  
         type="text" 
         placeholder="Telefono" 
-        id="inputSmall">
-        </div>
-        
-        </div>
-        <!--CORRESPONDENCIA-CIUDAD-TELEFONO-->
-        <div class="row">
-        
-        <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-6">
-        <input class="form-control form-control-sm"
-        name=""  
-        type="text" 
-        placeholder="direccion correspondencia" 
-        id="inputSmall">
-        </div>
-        
-        <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
-        <input class="form-control form-control-sm"
-        name=""  
-        type="text" 
-        placeholder="Email" 
-        id="inputSmall">
-        </div> 
-        
-        
-        <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
-        <input class="form-control form-control-sm"
-        name=""  
-        type="text" 
-        placeholder="Celular" 
         id="inputSmall">
         </div>
         
@@ -173,7 +144,7 @@
             <div class="row">
             
             <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
-            <select class="custom-select custom-select-sm">
+            <select class="custom-select custom-select-sm"  formControlName="tipoB" >
             <option selected="">Tipo de solicitante</option>
             <option value="INVERSIONISTA">Titular</option>
             <option value="CORREDOR">Beneficiario</option>
@@ -182,7 +153,7 @@
             
             <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-9">
             <input class="form-control form-control-sm"
-            name=""  
+            formControlName="nombreB" 
             type="text" 
             placeholder="Nombre y apellido" 
             id="inputSmall">
@@ -195,7 +166,7 @@
             
             <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-8 ">
             <input class="form-control form-control-sm"
-            name=""  
+            formControlName="documentoB" 
             type="number" 
             placeholder="No Documento de identidad" 
             id="inputSmall">
@@ -203,7 +174,7 @@
             
             
             <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4">
-            <select class="custom-select custom-select-sm">
+            <select class="custom-select custom-select-sm" formControlName="sexoB" >
             <option selected="">sexo</option>
             <option value="INVERSIONISTA">Mujer</option>
             <option value="CORREDOR">hombre</option>
@@ -217,7 +188,7 @@
             
             <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4 ">
             <input class="form-control form-control-sm"
-            name="valorFactura"  
+            formControlName="nacimientoB"  
             type="date" 
             placeholder="Fecha de nacimiento" 
             id="inputSmall">
@@ -225,14 +196,14 @@
             
             <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4 ">
             <input class="form-control form-control-sm"
-            name="valorFactura"  
+            formControlName="paisB"   
             type="text" 
             placeholder="Pais de nacimiento" 
             id="inputSmall">
             </div>
             
             <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4">
-            <select class="custom-select custom-select-sm">
+            <select class="custom-select custom-select-sm"  formControlName="estadoCivilB" >
             <option selected="">Estadi civil</option>
             <option value="Soltero">Soltero</option>
             <option value="Casado">Casado</option>
@@ -248,7 +219,7 @@
             
             <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-6">
             <input class="form-control form-control-sm"
-            name=""  
+            formControlName="dirResidenciaB"  
             type="text" 
             placeholder="direccion residencia" 
             id="inputSmall">
@@ -256,7 +227,7 @@
             
             <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
             <input class="form-control form-control-sm"
-            name=""  
+            formControlName="ciudadB" 
             type="text" 
             placeholder="ciudad" 
             id="inputSmall">
@@ -264,7 +235,7 @@
             
             <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
             <input class="form-control form-control-sm"
-            name=""  
+            formControlName="telefonoB" 
             type="text" 
             placeholder="Telefono" 
             id="inputSmall">
@@ -276,7 +247,7 @@
                     
             <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-6">
             <input class="form-control form-control-sm"
-            name=""  
+            formControlName="dirCorrespondenciaB" 
             type="text" 
             placeholder="Direccion Oficina" 
             id="inputSmall">
@@ -284,7 +255,7 @@
                         
             <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
             <input class="form-control form-control-sm"
-            name=""  
+            formControlName="ciudadBof" 
             type="text" 
             placeholder="Ciudad" 
             id="inputSmall">
@@ -292,42 +263,15 @@
             
             <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
             <input class="form-control form-control-sm"
-            name=""  
+            formControlName="telefonoB" 
             type="text" 
-            placeholder="Telefono" 
+            placeholder="celularB" 
             id="inputSmall">
             </div>
             
             </div>
-            <!--CORRESPONDENCIA-CIUDAD-TELEFONO-->
-            <div class="row">
             
-            <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-6">
-            <input class="form-control form-control-sm"
-            name=""  
-            type="text" 
-            placeholder="direccion correspondencia" 
-            id="inputSmall">
-            </div>
-            
-            <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
-            <input class="form-control form-control-sm"
-            name=""  
-            type="text" 
-            placeholder="Email" 
-            id="inputSmall">
-            </div> 
-            
-            
-            <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
-            <input class="form-control form-control-sm"
-            name=""  
-            type="text" 
-            placeholder="Celular" 
-            id="inputSmall">
-            </div>
-            
-            </div>
+
             
 </div>
 
@@ -339,7 +283,7 @@
             
                 <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-6">
                 <input class="form-control form-control-sm"
-                name=""  
+                formControlName="profesion"  
                 type="text" 
                 placeholder="Profesion" 
                 id="inputSmall">
@@ -347,7 +291,7 @@
                 
                 <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
                 <input class="form-control form-control-sm"
-                name=""  
+                formControlName="empresa" 
                 type="text" 
                 placeholder="Empresa" 
                 id="inputSmall">
@@ -355,7 +299,7 @@
                 
                 <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
                 <input class="form-control form-control-sm"
-                name=""  
+                formControlName="cargo" 
                 type="text" 
                 placeholder="Cargo" 
                 id="inputSmall">
@@ -367,7 +311,7 @@
             
                         <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-6">
                         <input class="form-control form-control-sm"
-                        name=""  
+                        formControlName="ingresos" 
                         type="text" 
                         placeholder="Ingresos Mensuales" 
                         id="inputSmall">
@@ -375,7 +319,7 @@
                         
                         <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
                         <input class="form-control form-control-sm"
-                        name=""  
+                        formControlName="activos" 
                         type="text" 
                         placeholder="Total activos" 
                         id="inputSmall">
@@ -383,7 +327,7 @@
                         
                         <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
                         <input class="form-control form-control-sm"
-                        name=""  
+                        formControlName="pasivos" 
                         type="text" 
                         placeholder="Total pasivos" 
                         id="inputSmall">
@@ -400,14 +344,14 @@
           
               <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4">
               <input class="form-control form-control-sm"
-              name=""  
+              formControlName="entidad" 
               type="text" 
               placeholder="entidad" 
               id="inputSmall">
               </div>
               
               <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-2">
-              <select class="custom-select custom-select-sm">
+              <select class="custom-select custom-select-sm"  formControlName="tipo" >
               <option selected="">Tipo de cuenta</option>
               <option value="Soltero">Ahorros</option>
               <option value="Casado">Corriente</option>
@@ -416,7 +360,7 @@
 
               <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
               <input class="form-control form-control-sm"
-              name=""  
+              formControlName="numero" 
               type="text" 
               placeholder="Numero de cuenta" 
               id="inputSmall">
@@ -424,20 +368,121 @@
 
               <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
               <input class="form-control form-control-sm"
-              name=""  
+              formControlName="titular" 
               type="text" 
               placeholder="Titular" 
               id="inputSmall">
               </div>
+
+          
+ 
               
               </div>
  
                       
-</div>    
+</div>   
 
-<div class="form-group formularioRegistro">
-<button [routerLink]="['/corredor']" class="btn btn-success submit-btn btn-block mt-4 mb-5">Enviar datos</button>
+
+<div class="form-group">
+<button type="submit" class="btn btn-success  btn-block mt-4 mb-2">Enviar datos</button>
 </div>
+
+<h4><small>Documentos</small></h4>
+
+
+<div class="row text-center">
+
+        <div class="col-sm-12 col-md-12 col-lg-6 mt-2">
+            <div class="row">
+            <div class="col-12">
+            <div class="card text-left pt-1 mb-0 ">
+            <h6 class="ml-2 text-black-50 mb-0"> Rut Actualizado </h6>
+            <div class="card-body p-2">
+            <div class="row">
+            <div class="col-8"> 
+            <input type="file" class="btn btn-sm btn-secondary" (change)="seleccionImagen($event.target.files[0])" formControlName="doc1">
+            </div>
+            <div class="col-3 text-center p-0">
+            <button class="pt-0 pb-0 btn btn-warning" (click)="cambiarImagen()"  >subir</button>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-12 col-lg-6 mt-2">
+                        <div class="row">
+                        <div class="col-12">
+                        <div class="card text-left pt-1 mb-0 ">
+                        <h6 class="ml-2 text-black-50 mb-0">Declacraciión de Renta</h6>
+                        <div class="card-body p-2">
+                        <div class="row">
+                        <div class="col-8"> 
+                        <input type="file" class="btn btn-sm btn-secondary" (change)="seleccionImagen2($event.target.files[0])" formControlName="doc2">
+                        </div>
+                        <div class="col-3 text-center p-0">
+                        <button class="pt-0 pb-0 btn btn-warning" (click)="cambiarImagen()" >subir</button>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                    </div>
+
+
+
+      </div>
+
+      <div class="row mb-5">
+
+                <div class="col-sm-12 col-md-12 col-lg-6 mt-2">
+                                <div class="row">
+                                <div class="col-12">
+                                <div class="card text-left pt-1 mb-0 ">
+                                <h6 class="ml-2 text-black-50 mb-0">Certificación Bancaria </h6>
+                                <div class="card-body p-2">
+                                <div class="row">
+                                <div class="col-8"> 
+                                <input type="file" class="btn btn-sm btn-secondary" (change)="seleccionImagen3($event.target.files[0])" formControlName="doc3">
+                                </div>
+                                <div class="col-3 text-center p-0">
+                                <button class="pt-0 pb-0 btn btn-warning">subir</button>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-12 col-lg-6 mt-2">
+                                        <div class="row">
+                                        <div class="col-12">
+                                        <div class="card text-left pt-1 mb-0 ">
+                                        <h6 class="ml-2 text-black-50 mb-0">Cédula</h6>
+                                        <div class="card-body p-2">
+                                        <div class="row">
+                                        <div class="col-8"> 
+                                        <input type="file" class="btn btn-sm btn-secondary" (change)="seleccionImagen4($event.target.files[0])" formControlName="doc4">
+                                        </div>
+                                        <div class="col-3 text-center p-0">
+                                        <button class="pt-0 pb-0 btn btn-warning">subir</button>
+                                        </div>
+                                        </div>
+                                        </div>
+                                        </div>
+                                        </div>
+                                        </div>
+                                    </div>
+        
+
+
+
+      </div>
+
 
 </form>
         

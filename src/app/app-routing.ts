@@ -7,7 +7,7 @@ import { NoPageFoundComponent } from './shared/no-page-found/no-page-found.compo
 import { Homeroutes } from './components/home/home.routes';
 
 const routes: Routes = [
-  { path: '',  redirectTo: '/login', pathMatch: 'full' },
+  { path: '',  redirectTo: '/login/ensubasta', pathMatch: 'full' },
   { path: 'login', component: LoginComponent , children: Homeroutes },
   { path: 'register', component: RegisterComponent , children: Homeroutes  },
   { path: '**', redirectTo : 'NoPageFoundComponent' }

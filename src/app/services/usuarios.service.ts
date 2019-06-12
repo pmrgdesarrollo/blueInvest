@@ -19,13 +19,13 @@ export class UsuariosService {
   usuario: Usuario;
 
   constructor( private _http: HttpClient , public router: Router  ) {
-    this.cargarStorage();
+ 
   }
 
 // CONEXION CON EL BACKEND //
 
 estalogueado() {
-
+this.cargarStorage();
 if ( this.token.length > 5 ) { return true ; } else { return false; }
 
  // return ( this.token.length > 5 ) ? true : false;

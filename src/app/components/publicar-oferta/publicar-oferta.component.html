@@ -12,66 +12,82 @@
                                     <span aria-hidden="true">&times;</span>
                                   </button>
 
-                        <h4 class="letra mt-4 mb-0">Publica una nueva factura!</h4>
+                        <h4 class="letra mt-1 mb-1">Publica una nueva factura!</h4>
 
 
 
 
 
                         <form [formGroup]='forma' (ngSubmit)="publicarFactura(forma)">
-                            <h6 class="mt-4">Selecciona un pagador</h6>
-                            <div class="form-row">
-                                <div class="form-group col-12 p-0">
-                                    <select class="form-control form-control-sm " formControlName="pagador">
-                                     <option selected>Selecciona un Pagador registrado</option>
-                                     <option *ngFor="let p of empresas ; index as i "
-                                     [value]="p.nombre_de_establecimiento" required > {{ p.nombre_de_establecimiento }} </option></select>
-                                </div>
+                         
+
+                            <div class="row">
+
+                                    
+                                   
+                                        <div class="form-group col-6 ">
+                                                <h6 class="mt-2">Pagador</h6>
+                                            <select class="form-control form-control-sm " formControlName="pagador">
+                                             <option selected>Selecciona tu Pagador registrado</option>
+                                             <option *ngFor="let p of empresas ; index as i "
+                                             [value]="p.nombre_de_establecimiento" required > {{ p.nombre_de_establecimiento }} </option></select>
+                                        </div>
+                                
+        
+                                   
+                                  
+                                        <div class="form-group col-6">
+                                                <h6 class="mt-2">Descontador</h6>
+                                            <select class="form-control form-control-sm " formControlName="descontador">
+                                            <option selected>Selecciona un descontador registrado</option>
+                                            <option *ngFor="let s of empresas ; index as i "
+                                            [value]="s.nombre_de_establecimiento" required > {{ s.nombre_de_establecimiento }} </option></select>
+                                        </div>
+                                    
+
+
                             </div>
 
-                            <h6 class="mt-1">Selecciona un descontador</h6>
-                            <div class="form-row">
-                                <div class="form-group col-12 p-0">
-                                    <select class="form-control form-control-sm " formControlName="descontador">
-                                    <option selected>Selecciona un descontador registrado</option>
-                                    <option *ngFor="let s of empresas ; index as i "
-                                    [value]="s.nombre_de_establecimiento" required > {{ s.nombre_de_establecimiento }} </option>
-                        </select>
-                                </div>
-                            </div>
+                           
 
-                            <div class="form-row mt-2 ">
-                                <div class="form-group col-3">
-                                    <label class="col-form-label-sm letraInput">Valor $</label>
-                                </div>
-                                <div class="form-group col-9">
+                        <div class="row mt-0">
+                
+                                <div class="form-group col-6">
+                                        <h6 class="col-form-label-sm letraInput">Valor $</h6>
                                     <input class="form-control form-control-sm" formControlName="valor" type="number" placeholder="$" id="inputSmall">
                                 </div>
 
-                            </div>
+                        
 
-                            <div class="form-row mt-2 mb-0 pb-0">
-                                <div class="form-group col-3">
-                                    <label class="col-form-label-sm letraInput">Fact No:</label>
-                                </div>
-                                <div class="form-group col-9">
+                        
+
+                                <div class="form-group col-6">
+                                <h6 class="col-form-label-sm letraInput">Fact No:</h6>
                                     <input class="form-control form-control-sm mb-0 " formControlName="numero" type="text" placeholder="No factura" id="inputSmall">
                                 </div>
+                         
                             </div>
-
 
                             <div class="form-row mt-2">
-                                <div class="form-group col-12 p-0">
-                                    <input class="form-control form-control-sm mb-0 " formControlName="plazo" type="number" placeholder="Plazo de la factura en dias">
+                                <div class="form-group col-6 ">
+                                        <label class="col-form-label-sm mb-0 letraInput">Plazo Original factura: </label>  
+                                    <input class="form-control form-control-sm mb-0 " formControlName="plazo" type="number" placeholder="ej : 90 dias">
                                 </div>
+
+                                <div class="form-group col-6 ">
+                                    <label class="col-form-label-sm mb-0 letraInput">Fecha estimada del pago: </label>  
+                                 <input class="form-control form-control-sm" formControlName="pagoEstimado" type="date" placeholder="fecha de pago" id="inputSmall">
+                                </div>
+
+
                             </div>
 
-                            <div class="form-row">
+                            <div class="form-row mt-4">
                                     <div class="form-group col-6">
                                             <label class="col-form-label-sm mb-0 letraInput"> % minimo para pago</label>
-                                            <input class="form-control form-control-sm" formControlName="porcentaje" type="number" placeholder=" ej: %90 " id="inputSmall">
+                                            <input class="form-control form-control-sm" formControlName="porcentaje" type="number" placeholder=" ej: 80% del total " id="inputSmall">
                                         </div>
-        
+
                                         <div class="form-group col-6">
                                             <label class="col-form-label-sm mb-0 letraInput">Monto minimo de inversion: </label>
                                             <input class="form-control form-control-sm" formControlName="monto" type="number" placeholder="$" id="inputSmall">
@@ -121,6 +137,8 @@
 
 
                         </form>
+
+
                     </div>
 
 

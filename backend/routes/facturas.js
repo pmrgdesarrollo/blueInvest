@@ -96,6 +96,7 @@ app.post('/', autenticacionToken.verificaToken, (request, response) => {
         valor: body.valor,
         numero: body.numero,
         plazo: body.plazo,
+        pagoEstimado:body.pagoEstimado,
         porcentaje:body.porcentaje,
         monto:body.monto,
         tasa: body.tasa,
@@ -145,12 +146,13 @@ app.put('/:id', autenticacionToken.verificaToken, (request, response) => {
         });
 
         facturaID.pagador = body.pagador;
-        facturaID.descontador = body.descontador,
+        facturaID.descontador = body.descontador;
         facturaID.valor = body.valor;
         facturaID.numero = body.numero;
         facturaID.plazo = body.plazo;
-        facturaID.porcentaje = body.porcentaje,
-        facturaID.monto = body.monto,
+        facturaID.pagoEstimado = body.pagoEstimado;
+        facturaID.porcentaje = body.porcentaje;
+        facturaID.monto = body.monto;
         facturaID.tasa = body.tasa;
         facturaID.vencimiento = body.vencimiento;
         facturaID.disponible = body.disponible;

@@ -56,7 +56,7 @@ app.get('/:id', ( request , response ) => {
 }); 
 
 /*=================================================
-        OBTENER MIS OEFRTAS ( GET )
+        OBTENER MIS OEFRTAS CORREDOR ( GET )
 =================================================*/
 app.get('/misOfertas/:id', ( request , response ) => { 
 
@@ -79,6 +79,31 @@ app.get('/misOfertas/:id', ( request , response ) => {
 
 }); 
 
+
+/*=================================================
+        OBTENER MIS OEFRTAS INVERSIONISTA ( GET )
+=================================================*/
+app.get('/misOfertasInv/:id', ( request , response ) => { 
+
+        var id = request.params.id;
+        
+        
+        Oferta.find( { usuario: id } ).exec( 
+                ( error , ListaDeOfertas ) =>{
+                        if(error) return error ;
+                        response.status(200).json({
+                                                   PeticionOK:true,
+                                                   mensaje:'Get de ofertas andando',
+                                                   ListaDeOfertas:ListaDeOfertas
+                                                   });
+                      
+                                                                    });  
+
+
+ 
+
+});
+
 /*=================================================
         OBTENER OEFRTAS SOBRE FACTURAS ( GET )
 =================================================*/
@@ -87,7 +112,7 @@ app.get('/factura/:id', ( request , response ) => {
         var id = request.params.id;
         
         
-        Oferta.find( { factura: id } ).exec( 
+        Oferta.find( { factura : id } ).exec( 
                 ( error , ListaDeOfertas ) =>{
                         if(error) return error ;
                         response.status(200).json({
@@ -113,10 +138,13 @@ app.post( '/', autenticacionToken.verificaToken , ( request , response )=>{
         var body = request.body ;
         
         var oferta = new Oferta({ 
+                fechaOferta:body.fechaOferta,
                 valorOferta: body.valorOferta ,
                 tasaOferta : body.tasaOferta ,
                 usuarioFactura: body.usuarioFactura,
                 factura: body.factura ,
+                facturaValor:body.facturaValor,
+                facturaFechaPago:body.facturaFechaPago,
                 estado: body.estado ,
                 liberada: body.liberada,
                 fraccion: body.fraccion,
@@ -124,9 +152,22 @@ app.post( '/', autenticacionToken.verificaToken , ( request , response )=>{
                 cuenta:body.cuenta,
                 banco:body.banco,
                 tipo:body.tipo,
+                pagando:body.pagando,
+                payU:body.payU,
+                conSaldo:body.conSaldo,
+                transferencia:body.transferencia,
+                pagoConfirmado:body.pagoConfirmado,
+                pagoConfirmadoCorredor:body.pagoConfirmadoCorredor,
+                cargarSaldo:body.cargarSaldo,
+                transferir:body.transferir,
+                pagoFecha:body.pagoFecha,
+                docsOf: body.docsOf,
+                utilidad:body.utilidad,
+                utilidadFinal:body.utilidadFinal,
+                pagadorPago:body.pagadorPago,
                 usuario : request.usuario._id ,
                 
-            
+               
            });
                                  
            oferta.save( ( error , oferta ) => { 
@@ -163,11 +204,13 @@ Oferta.findById( id , ( error , ofertaAeditar )=> {
                                                      mensaje:'No existe este oferta en db',
                                                      errors:error
                                                     });}  
-                                                                                                   
+                          ofertaAeditar.fechaOferta = body.fechaOferta;                                                                         
                           ofertaAeditar.valorOferta = body.valorOferta;
                           ofertaAeditar.tasaOferta = body.tasaOferta;
                           ofertaAeditar.usuarioFactura = body.usuarioFactura;
                           ofertaAeditar.factura = body.factura,
+                          ofertaAeditar.facturaValor = body.facturaValor,
+                          ofertaAeditar.facturaFechaPago = body.facturaFechaPago,
                           ofertaAeditar.estado= body.estado,
                           ofertaAeditar.liberada = body.liberada,
                           ofertaAeditar.fraccion = body.fraccion,
@@ -175,6 +218,19 @@ Oferta.findById( id , ( error , ofertaAeditar )=> {
                           ofertaAeditar.cuenta = body.cuenta,
                           ofertaAeditar.banco = body.banco,
                           ofertaAeditar.tipo = body.tipo,
+                          ofertaAeditar.pagando = body.pagando,
+                          ofertaAeditar.payU = body.payU,
+                          ofertaAeditar.conSaldo = body.conSaldo,
+                          ofertaAeditar.transferencia = body.transferencia,
+                          ofertaAeditar.pagoConfirmado = body.pagoConfirmado,
+                          ofertaAeditar.pagoConfirmadoCorredor = body.pagoConfirmadoCorredor,
+                          ofertaAeditar.cargarSaldo = body.cargarSaldo,
+                          ofertaAeditar.transferir = body.transferir,
+                          ofertaAeditar.pagoFecha = body.pagoFecha,
+                          ofertaAeditar.docsOf = body.docsOf,
+                          ofertaAeditar.utilidad = body.utilidad,
+                          ofertaAeditar.utilidadFinal = body.utilidadFinal,
+                          ofertaAeditar.pagadorPago = body.pagadorPago,
                           ofertaAeditar.usuario = request.usuario._id,
 
 ofertaAeditar.save( ( error , ofertaEditada )=>{ 

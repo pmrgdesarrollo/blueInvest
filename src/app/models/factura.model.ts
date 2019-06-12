@@ -6,6 +6,7 @@ export class Factura {
                  public valor: number,
                  public numero: string,
                  public plazo: number,
+                 public pagoEstimado: Date ,
                  public porcentaje: number,
                  public monto: number,
                  public tasa: number,

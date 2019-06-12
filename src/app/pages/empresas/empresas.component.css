@@ -1,6 +1,10 @@
-th,td {
+th,td  {
     color:black;
-    font-size: 10px;
+    font-size: 8px;
+}
+
+h3 , label{
+    color:grey;
 }
 
 .w-70{

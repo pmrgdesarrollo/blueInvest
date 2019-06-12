@@ -142,11 +142,20 @@ app.post( '/' ,  ( request , response ) => {
   var body = request.body ;
 
   var comercio = new Comercio ( {
-    nombre_de_establecimiento: body.nombre,
+    nombre_de_establecimiento: body.nombre_de_establecimiento,
     actividad: body.actividad,
     nit: body.nit,
     direccion: body.direccion,
-    telefono:body.telefono
+    telefono:body.telefono,
+    activos2016:body.activos2016, 
+    activos2017:body.activos2017, 
+    activos2018:body.activos2018, 
+    pasivos2016:body.pasivos2016, 
+    pasivos2017:body.pasivos2017, 
+    pasivos2018:body.pasivos2018, 
+    neta2016:body.neta2016, 
+    neta2017:body.neta2017, 
+    neta2018:body.neta2018, 
 
                               } );
 
@@ -199,7 +208,16 @@ empresa.nombre_de_establecimiento = body.nombre;
 empresa.actividad = body.actividad;
 empresa.nit = body.nit; 
 empresa.direccion = body.direccion; 
-empresa.telefono = body.telefono;  
+empresa.telefono = body.telefono; 
+empresa.activos2016 = body.activos2016, 
+empresa.activos2017 = body.activos2017, 
+empresa.activos2018 = body.activos2018, 
+empresa.pasivos2016 = body.pasivos2016, 
+empresa.pasivos2017 = body.pasivos2017, 
+empresa.pasivos2018 = body.pasivos2018, 
+empresa.neta2016 = body.neta2016, 
+empresa.neta2017 = body.neta2017, 
+empresa.neta2018 = body.neta2018,  
 
 //luego guardamos el nuevo regsitro
 empresa.save( ( error , empresaEditada ) =>  { 

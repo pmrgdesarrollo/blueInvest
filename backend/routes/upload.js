@@ -9,6 +9,9 @@ var fs = require('fs');
 
 var Usuario = require('../models/usuario');
 var Factura = require('../models/facturas');
+var Oferta = require('../models/ofertas');
+var Natural = require('../models/naturales');
+var Juridica = require('../models/juridicas');
 
 // PUT CON VALIDACION PARA SOLO IMAGENES
 
@@ -19,7 +22,7 @@ app.put('/:tipo/:id', (request, response) => {
 
     //Tipos validos ( continuacion de mover archivo a un path ) 
 
-    var tiposValidos = ['facturas', 'pagadores', 'descontadores'];
+    var tiposValidos = ['facturas', 'ofertas', 'naturales' , 'juridicas' ];
 
     if (tiposValidos.indexOf(tipo) < 0) {
         return response.status(400).json({
@@ -60,7 +63,7 @@ app.put('/:tipo/:id', (request, response) => {
 
     var path = `./uploads/${ tipo }/${ nombreArchivo }`;
 
-    archivoImagen.mv(path, error => {
+    archivoImagen.mv(path , error => {
 
         if (error) {
             return response.status(400).json({
@@ -79,7 +82,7 @@ app.put('/:tipo/:id', (request, response) => {
 });
 
 /*===============================================================================================================================
-        AGREGAR IMAGEN AL TIPO DE ARCHIVO ( FACTURA , PAGADOR , DESCONTADOR ) se deben importar los modelos para aplicar el .save
+        AGREGAR IMAGEN AL TIPO DE ARCHIVO ( FACTURA , OFERTA , DESCONTADOR ) se deben importar los modelos para aplicar el .save
 ===============================================================================================================================*/
 
 subirPorTipo = function(tipo, id, nombreArchivo, response) {
@@ -101,7 +104,7 @@ subirPorTipo = function(tipo, id, nombreArchivo, response) {
                 }
                 if (error) return response.status(500).json({ ok: false, error: error });
                 factura.docs = nombreArchivo;
-                factura.save((error, facturaActualizada) => {
+                factura.save((error, facturaActualizadaEnUploads) => {
 
                     if (error) {
                         return response.status(400).json(
@@ -119,7 +122,7 @@ subirPorTipo = function(tipo, id, nombreArchivo, response) {
 
                         {
                             ok: true,
-                            facturaActualizada
+                            facturaActualizadaEnUploads
                         });
 
 
@@ -127,87 +130,109 @@ subirPorTipo = function(tipo, id, nombreArchivo, response) {
 
             });
             break;
-        case 'medicos':
-            Medico.findById(id, (error, medico) => {
+        case 'ofertas':
+            Oferta.findById(id, (error, oferta) => {
 
-                if (!medico) {
+                if (!oferta) {
                     fs.unlinkSync(`./uploads/${tipo}/${nombreArchivo}`);
-                    return response.status(400).json({ mensaje: 'este medico no existe' });
+                    return response.status(400).json({ mensaje: 'esta oferta no existe' });
                 }
 
-                var pathViejo = './uploads/medicos/' + medico.img;
+                var pathViejo = './uploads/ofertas/' + oferta.docsOf;
                 // Aqui se importa el FS de node para validar si la imagen existe y eliminarla
                 if (fs.existsSync(pathViejo)) {
                     fs.unlinkSync(pathViejo);
                 }
                 if (error) return response.status(500).json({ ok: false, error: error });
-                medico.img = nombreArchivo;
-                medico.save((error, medicoActualizado) => {
+                oferta.docsOf = nombreArchivo;
+                oferta.save((error, ofertaActualizada) => {
 
                     if (error) {
                         return response.status(400).json(
 
                             {
                                 ok: false,
-                                mensjae: 'Error actualizando foto de medico',
+                                mensaje: 'Error actualizando foto de oferta',
                                 errors: error,
                             }
 
                         );
                     }
 
-                    response.status(201).json(
+                    response.status(200).json(
 
                         {
                             ok: true,
-                            medicoActualizado
+                            ofertaActualizada
                         });
 
 
                 });
-
             });
             break;
-        case 'hospitales':
-            Hospital.findById(id, (error, hospital) => {
+        case 'naturales':
 
-                if (!hospital) {
-                    fs.unlinkSync(`./uploads/${tipo}/${nombreArchivo}`);
-                    return response.status(400).json({ mensaje: 'este usuario no existe' });
-                }
+        Natural.findById(id, (error, personaNatural ) => {
 
-                var pathViejo = './uploads/hospitales/' + hospital.img;
-                // Aqui se importa el FS de node para validar si la imagen existe y eliminarla
-                if (fs.existsSync(pathViejo)) {
-                    fs.unlinkSync(pathViejo);
-                }
-                if (error) return response.status(500).json({ ok: false, error: error });
-                hospital.img = nombreArchivo;
-                hospital.save((error, hospitalActualizado) => {
+            if (!personaNatural) {
+                fs.unlinkSync(`./uploads/${tipo}/${nombreArchivo}`);
+                return response.status(400).json({ mensaje: 'esta personaNatural no existe' });
+            }
 
-                    if (error) {
-                        return response.status(400).json(
+            var pathViejo = './uploads/naturales/' + personaNatural.doc1;
+            var pathViejo2 = './uploads/naturales/' + personaNatural.doc2;
+            var pathViejo3 = './uploads/naturales/' + personaNatural.doc3;
+            var pathViejo4 = './uploads/naturales/' + personaNatural.doc4;
+            // Aqui se importa el FS de node para validar si la imagen existe y eliminarla
+            if (fs.existsSync(pathViejo)) {
+                fs.unlinkSync(pathViejo);
+            }
 
-                            {
-                                ok: false,
-                                mensjae: 'Error actualizando foto de medico',
-                                errors: error,
-                            }
+            if (fs.existsSync(pathViejo2)) {
+                fs.unlinkSync(pathViejo2);
+            }
 
-                        );
-                    }
+            if (fs.existsSync(pathViejo3)) {
+                fs.unlinkSync(pathViejo3);
+            }
 
-                    response.status(201).json(
+            if (fs.existsSync(pathViejo4)) {
+                fs.unlinkSync(pathViejo4);
+            }
+
+
+
+            if (error) return response.status(500).json({ ok: false, error: error });
+
+            personaNatural.doc1 = nombreArchivo;
+           
+
+            personaNatural.save((error, personaNaturalActualizada) => {
+
+                if (error) {
+                    return response.status(400).json(
 
                         {
-                            ok: true,
-                            hospitalActualizado
-                        });
+                            ok: false,
+                            mensaje: 'Error actualizando foto de personaNaturalActualizada',
+                            errors: error,
+                        }
 
+                    );
+                }
 
-                });
+                response.status(200).json(
+
+                    {
+                        ok: true,
+                        personaNaturalActualizada
+                    });
+
 
             });
+        });
+
+
             break;
 
         default:
@@ -219,3 +244,6 @@ subirPorTipo = function(tipo, id, nombreArchivo, response) {
 
 
 module.exports = app;
+
+
+      

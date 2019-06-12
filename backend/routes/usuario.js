@@ -5,6 +5,7 @@ var express = require( 'express' );
 var autenticacionToken = require( '../middleWares/autenticacion');
 
 
+
 var app = express();
 
 //Para importar el modelo de usuarios
@@ -78,6 +79,7 @@ app.post( '/' ,  ( request , response ) => {
     email: body.email,
     password: bcryptjs.hashSync( body.password,10),
     role: body.role,
+   
 
                               } );
 

@@ -1,0 +1,80 @@
+<div class="container">
+
+
+
+    <div class="row">
+  
+    <div class="col-6 mt-3 text-center">
+  
+        <h5>Realizando el pago por transferencia! </h5>
+  
+  
+  
+        <div class="col-12 text-center mt-4">
+            <h6>
+                Factura : <small>{{ factura?._id }}</small> 
+              </h6>
+        
+              <h6>
+               Mi oferta: <small>{{ oferta?._id }}</small> 
+             </h6>
+        
+             <h6>
+                Valor aprobado: <small>{{ precioFinal | currency:'COP':'$' }}</small> 
+              </h6>
+  
+              <h6>
+                  Pagador: <small>{{ factura?.pagador}}</small> 
+                </h6>
+                <h6>
+                  Descontador: <small>{{ factura?.descontador }}</small> 
+                </h6>
+                <h6>
+                  Paga en : <small>{{ factura?.plazo}} dias </small> 
+                </h6>
+  
+                <hr>
+  
+                <h5>
+                    usuario: <small>{{ oferta?.usuario.nombre }}</small> 
+                  </h5>
+                  <h5>
+                     Banco: <small>{{ oferta?.banco}}</small> 
+                  </h5>
+                  <h5>
+                     Tipo de cuenta: <small>{{ oferta?.tipo }}</small> 
+                 </h5>
+                  <h5>
+                     No cuenta: <small>{{ oferta?.cuenta}}</small> 
+                  </h5>
+                
+  
+  
+  
+
+  </div>
+     
+    </div>  
+
+    <div class="col-6 text-center mt-3">
+
+        <h5>Para finalizar </h5>
+  
+<h3> sube aqui el comprobante de pago!!</h3>  
+
+<form [formGroup]='forma' (ngSubmit)="subirImagen( forma )">
+
+<div class="col-12 text-center ml-0 mt-4 mb-4 p-0 pb-0">
+<input type="file" class="btn-outline-secondary" (change)="seleccionImagen($event.target.files[0])" formControlName="docsOf">
+</div>
+
+<button type="submit"  class="btn btn-primary">Enviar comprobante</button>
+
+</form>
+  
+    </div>
+  
+  
+  </div>
+
+</div>

@@ -10,6 +10,15 @@ var comercioSchema = new Schema({
                         nit: { type: String , required: false  }, 
                         direccion:{ type: String, required: false }, 
                         telefono:{ type: Number, required: false  }, 
+                        activos2016:{ type: String, required: false  }, 
+                        activos2017:{ type: String, required: false  }, 
+                        activos2018:{ type: String, required: false  }, 
+                        pasivos2016:{ type: String, required: false  }, 
+                        pasivos2017:{ type: String, required: false  }, 
+                        pasivos2018:{ type: String, required: false  }, 
+                        neta2016:{ type: String, required: false  }, 
+                        neta2017:{ type: String, required: false  }, 
+                        neta2018:{ type: String, required: false  }, 
          },  
                    
                         { collection: 'comercio' });

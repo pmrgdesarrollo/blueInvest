@@ -37,6 +37,8 @@ import { FotograndeComponent } from './fotogrande/fotogrande.component';
 import { EmpresasComponent } from './empresas/empresas.component';
 import { EmpresaComponent } from './empresa/empresa.component';
 
+/* CHARTS MODULE */
+import { ChartsModule } from 'ng2-charts';
 
 
 
@@ -55,7 +57,8 @@ import { EmpresaComponent } from './empresa/empresa.component';
                routingPages,
                FormsModule ,
                ReactiveFormsModule,
-               PipesModule
+               PipesModule,
+               ChartsModule
 
                 ],
 

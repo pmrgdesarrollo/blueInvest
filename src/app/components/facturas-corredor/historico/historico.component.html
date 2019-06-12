@@ -1,3 +1,50 @@
-<p>
-  historico works!
-</p>
+<div class="facturaPublicada mt-2 m-1" *ngFor="let factura1 of misFacturas">
+
+    <div class="mt-2 m-1">
+        <h6 class="ml-1 mb-2 mt-3">Factura No: {{ factura1?.numero }} </h6>
+    
+        <table class="table-hover table-responsibe table-sm table m-0">
+            <thead class="text-left">
+                <tr>
+                    <th scope="col">Pagador: {{ factura1?.pagador }} </th>
+                    <th scope="col">descontador: {{ factura1?.descontador}} </th>
+                    <th scope="col">Valor: {{ factura1?.valor | currency:'COP':'$' }}</th>
+                    <th scope="col">Vence: {{ factura1?.vencimiento | date:'medium' }}</th>
+                    <th scope="col">Plazo: {{ factura1?.plazo }}</th>
+                </tr>
+            </thead>
+        </table>
+
+        <h6 class="mt-2">Ofertas pagas confirmadas</h6>
+
+
+
+<table class="table-hover table-responsibe table-sm table m-0 " *ngFor="let oferta of misOfertas">
+        <thead class="text-left" *ngIf="oferta?.factura == factura1?._id">
+          <tr>
+            <th scope="col">Inversionista</th>
+            <th scope="col">Tasa</th>
+            <th scope="col">Valor</th>
+            <th scope="col">Pago pagador </th>
+            <th scope="col">Tipo de pago</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ oferta?.nombre }}</td>
+            <td>{{ oferta?.tasaOferta}}</td>
+            <td> {{ oferta?.valorOferta | currency:'COP':'$' }}</td>
+            <td> <button class="btn btn-sm btn-success" (click)="confirmarPagoPagador( oferta )" >Confirmar</button> </td> 
+            <td> <button class="btn btn-sm btn-danger" *ngIf="oferta?.transferir" >Transferencia</button> <button *ngIf="oferta?.cargarSaldo"  class="btn btn-sm btn-danger" >Cargar al saldo</button>  </td>  
+          </tr>
+        </tbody>
+      </table>
+
+
+    
+        
+    </div>
+
+
+</div>
+

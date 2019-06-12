@@ -1,3 +1,34 @@
-<p>
-  ofertadas works!
-</p>
+<div class="p-1 marco">
+
+  <table class="table tamano text-center">
+  <thead>
+    <tr>
+      <th scope="col">Factura</th>
+      <th scope="col">Inversion Incial</th>
+      <th scope="col">Tasa:</th>
+      <th scope="col">Utilidad diaria:</th> 
+      <th scope="col">Utilidad a hoy:</th> 
+      <th scope="col">Estado:</th> 
+
+    
+    </tr>
+  </thead>
+  
+  <tbody> 
+    <tr class="table-active text-center" *ngFor="let oferta of pagas" >
+      <td>{{ oferta?.factura }}</td>
+      <td>{{ oferta?.valorOferta | currency:'COP':'$' }}</td>
+      <td> {{ oferta?.tasaOferta }} %</td>
+      <td> {{ oferta?.utilidad | currency:'COP':'$'  }} </td> 
+      <td> {{ oferta?.utilidadTotal | currency:'COP':'$'  }} </td> 
+      <td *ngIf="oferta.pagadorPago === false "> Pendiente </td> <td>  <button class="btn btn-sm btn-success" (click)="elegirMetodo( oferta._id )" *ngIf="oferta.pagadorPago === true " > Pago </button></td>
+     
+   </tr>
+  
+    </tbody>
+  
+  </table>
+  
+  
+  
+  </div>

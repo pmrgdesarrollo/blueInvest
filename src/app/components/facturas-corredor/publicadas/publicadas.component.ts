@@ -76,6 +76,7 @@ this.cambiarestadoBoton();
 this.cargarMisFacturas();
 
 }
+
 cargarMisFacturas() {
 this._facturaService.cargarMisFacturas().subscribe( data => {
 this.misfacturas = data ;
@@ -93,7 +94,6 @@ return this.ruta.navigate( [ '/corredor/publicadas' ] );
 seleccionImagen( archivo: File ) {
 console.log( event );
 if ( !archivo ) { this.imagenSubir = null ; return ; } this.imagenSubir = archivo ;
-
 }
 
 cambiarImagen( id ) {

@@ -10,6 +10,7 @@ var facturaSchema = new Schema({
     valor: { type: Number, required: true },
     numero: { type: String, unique: [true, 'esta factura ya fue creada'], required: [true, 'El numero de factura es necesario'] },
     plazo: { type: Number, required: true },
+    pagoEstimado: { type: Date, required: false },
     porcentaje: { type: Number, required: true },
     monto: { type: Number, required: true },
     tasa: { type: Number, required: true },

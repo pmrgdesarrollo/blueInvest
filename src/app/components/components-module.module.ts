@@ -26,6 +26,11 @@ import { MensajeInformativoComponent } from './mensaje-informativo/mensaje-infor
 import { HttpClientModule } from '@angular/common/http';
 import { AgregarFacturaLinkComponent } from './agregar-factura-link/agregar-factura-link.component';
 import { PipesModule } from '../pipes/pipes.module';
+import { GraficoComponent } from './grafico/grafico.component';
+
+
+
+
 
 
 
@@ -44,10 +49,10 @@ import { PipesModule } from '../pipes/pipes.module';
     MensajeInformativoComponent,
     IngresarDescontadorComponent,
     AgregarFacturaLinkComponent,
- 
+    GraficoComponent,
 
 
-  ],
+],
 
     exports: [
     PublicarOfertaComponent,
@@ -58,7 +63,8 @@ import { PipesModule } from '../pipes/pipes.module';
     IngresarPagadorComponent,
     MensajeInformativoComponent,
     IngresarDescontadorComponent,
-    AgregarFacturaLinkComponent
+    AgregarFacturaLinkComponent,
+    GraficoComponent,
   ],
 
     imports: [
@@ -70,7 +76,8 @@ import { PipesModule } from '../pipes/pipes.module';
     ChartsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    PipesModule
+    PipesModule,
+
   ],
 
   providers: [ PublicarOfertaComponent , IngresarPagadorComponent ],

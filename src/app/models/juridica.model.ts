@@ -32,6 +32,13 @@ export class Juridica {
         public documentoA: String,
         public cargoA: String,
         public telefonoA: String,
+        public doc1: String,
+        public doc2: String,
+        public doc3: String,
+        public doc4: String,
+     //   public doc5: String,
+        public aprobabo: boolean,
+        public usuario?: string,
                  ) { }
 
 

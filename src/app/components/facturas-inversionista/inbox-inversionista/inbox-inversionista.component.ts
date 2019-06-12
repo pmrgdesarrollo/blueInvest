@@ -20,7 +20,7 @@ export class InboxInversionistaComponent implements OnInit {
   }
 
   cargarOfertas() {
-  this._ofertaService.cargarMisOfertas().subscribe( data => {
+  this._ofertaService.cargarMisOfertasInveriosnista().subscribe( data => {
     console.log( data );
     // tslint:disable-next-line:forin
    this.misOfertas = data ; });

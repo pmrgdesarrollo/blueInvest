@@ -11,7 +11,7 @@ export class AppComponent {
   title = 'abakoadv';
 
 
-  constructor(  ) {
+  constructor() {
 
    }
 

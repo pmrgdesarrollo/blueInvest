@@ -29,7 +29,7 @@
       <h6 class="ml-1 mb-0 mt-1 color">Estado: {{ progresoTotal }} %  </h6>
       </div>
       <div class="col-8">
-      <h6 class="ml-1 mb-0 mt-1 color">Dias restantes: 12</h6>
+      <h6 class="ml-1 mb-0 mt-1 color">Dias restantes: {{ diasRestantes }} </h6>
       </div>
       </div>
       
@@ -75,7 +75,7 @@
         placeholder="Tasa que propones"
         required>
   
-        <button type="submit" class="col-sm-12 col-md-2 col-lg-12 mt-2 mb-2 btn btn-success btn-sm ">Hacer la oferta</button>
+        <button type="submit"  class="col-sm-12 col-md-2 col-lg-12 mt-2 mb-2 btn btn-success btn-sm ">Hacer la oferta</button>
   
     </div>
   
@@ -90,7 +90,7 @@
 
 <div class="row mb-1">
     <div class="col-12 text-center">
-    <button type="button" [routerLink]="['/inversor']" class="btn btn btn-primary mr-2 mt-1">O Regresa al panel de administración</button>
+    <button type="button" [routerLink]="['/inversor/inboxInversionista']" class="btn btn btn-primary mr-2 mt-1">O Regresa al panel de administración</button>
     </div>
     </div>
 

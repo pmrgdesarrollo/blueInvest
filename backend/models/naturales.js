@@ -19,7 +19,7 @@ var personaNaturalSchema = new Schema({
                                   ciudad: { type: String, required: false},
                                   telefono: { type: String, required: false},
                                   dirCorrespondencia: { type: String, required: false},
-                                  email: { type: String, required: false},
+                                  ciudadOf: { type: String, required: false},
                                   celular: { type: String, required: false},
 //LA B es de beneficiario
                                   tipoB: { type: String, required: false }, 
@@ -33,7 +33,7 @@ var personaNaturalSchema = new Schema({
                                   ciudadB: { type: String, required: false},
                                   telefonoB: { type: String, required: false},
                                   dirCorrespondenciaB: { type: String, required: false},
-                                  emailB: { type: String, required: false},
+                                  ciudadBof: { type: String, required: false},
                                   celularB: { type: String, required: false},
 
                                   profesion: { type: String, required: false},
@@ -47,6 +47,16 @@ var personaNaturalSchema = new Schema({
                                   tipo: { type: String, required: false},
                                   numero: { type: String, required: false},
                                   titular: { type: String, required: false},
+                                  // Documentos                         
+                                  doc1: { type: String, required: false},
+                                  doc2: { type: String, required: false},
+                                  doc3: { type: String, required: false},
+                                  doc4: { type: String, required: false},
+                               // doc5: { type: String, required: false},
+                                  // Aprobacion  
+                                  aprobado: {type: Boolean , required: false},
+
+                                  usuario: { type: Schema.Types.ObjectId, ref: 'Usuario' },
                             
                                 
                                 },  

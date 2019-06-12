@@ -15,6 +15,10 @@ import { Router } from '@angular/router';
       font-size:10px;
     }
 
+    .pointer{
+      cursor:pointer;
+    }
+
     `
    ]
 })
@@ -31,6 +35,7 @@ desde = 0;
 total;
 termino;
 cargando = false ;
+cero = false;
 
 
 constructor(  private _empresas: ComercioService , private ruta: Router )  {
@@ -41,7 +46,7 @@ constructor(  private _empresas: ComercioService , private ruta: Router )  {
 
 
   ngOnInit() {
-    this.cargarEmpresas();
+
 
   }
 
@@ -72,11 +77,11 @@ constructor(  private _empresas: ComercioService , private ruta: Router )  {
 
 buscarEmpresa(termino: string) {
 
-
-
   if ( termino.length <= 0 ) { this.cargarEmpresas() ; return ;  }
   this._empresas.buscarEmpresa( termino ).subscribe( ( empresas: Comercio[] ) => {
   this.empresas = empresas;
+  if ( this.empresas.length === 0 ) { this.cero = true; }
+  if ( this.empresas.length > 0 ) { this.cero = false; }
   console.log( empresas );
 
   });

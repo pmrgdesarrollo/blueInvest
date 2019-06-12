@@ -3,7 +3,7 @@ import { Oferta } from 'src/app/models/oferta.model';
 import { Factura } from 'src/app/models/factura.model';
 import { OfertaService } from '../../../services/oferta.service';
 import { FacturasService } from '../../../services/facturas.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 // tslint:disable-next-line:quotemark
 import {Md5} from "md5-typescript";
 
@@ -36,7 +36,8 @@ export class PagarComponent implements OnInit {
 
   signature;
 
-  constructor( private _oferta: OfertaService , private _factura: FacturasService , private _ruta: ActivatedRoute ) {
+  constructor( private _oferta: OfertaService , private _factura: FacturasService ,
+    private _ruta: ActivatedRoute , private _router: Router ) {
     this._ruta.params.subscribe( params => this.idOferta = params['id'] );
     this.idFactura = this._factura.idfactura;
 
@@ -68,6 +69,85 @@ export class PagarComponent implements OnInit {
   this._factura.obtenerFactura( this.idFactura ).subscribe( factura => {this.factura = factura ; console.log( factura ); } );
   }
 
+  payU( ) {
+
+  }
+
+  saldo( fechaOferta, valorOferta , tasaOferta , usuarioFactura , factura ,
+  facturaValor , facturaFechaPago,  estado , liberada , fraccion , nombre , cuenta , banco , tipo ,
+  pagando , payU , conSaldo , transferencia , pagoConfirmado , pagoFecha , docsOf , utilidad , _id  ) {
+
+    const oferta = new Oferta(
+      fechaOferta,
+      valorOferta ,
+      tasaOferta ,
+      usuarioFactura ,
+      factura ,
+      facturaValor,
+      facturaFechaPago,
+      estado ,
+      liberada,
+      fraccion,
+      nombre,
+      cuenta,
+      banco,
+      tipo,
+      pagando = true ,
+      payU  = false ,
+      conSaldo = true ,
+      transferencia = false ,
+      pagoConfirmado = false ,
+      pagoFecha,
+      docsOf,
+      utilidad,
+      _id );
+
+      this._oferta.saldo( oferta , _id ).subscribe(
+       ( data: any) => console.log( data )
+      );
+
+      this._router.navigate( [  '/inversor/saldo' , _id  ] );
+
+
+  }
+
+
+transferencia( fechaOferta , valorOferta , tasaOferta , usuarioFactura , factura ,
+  facturaValor , facturaFechaPago , estado , liberada , fraccion , nombre , cuenta , banco , tipo ,
+    pagando , payU , conSaldo , transferencia , pagoConfirmado , pagoFecha , docsOf , utilidad , _id  ) {
+
+      const oferta = new Oferta(
+        fechaOferta,
+        valorOferta ,
+        tasaOferta ,
+        usuarioFactura ,
+        factura ,
+        facturaValor,
+        facturaFechaPago,
+        estado ,
+        liberada,
+        fraccion,
+        nombre,
+        cuenta,
+        banco,
+        tipo,
+        pagando = true ,
+        payU  = false ,
+        conSaldo = false ,
+        transferencia = true ,
+        pagoConfirmado = false ,
+        pagoFecha,
+        docsOf,
+        utilidad,
+        _id );
+
+        this._oferta.transferencia( oferta , _id ).subscribe(
+         ( data: any) => console.log( data )
+        );
+
+        this._router.navigate( [  '/inversor/transferencia' , _id  ] );
+
+    }
 
 
 }

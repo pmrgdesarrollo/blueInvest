@@ -6,6 +6,7 @@ import { InboxCorredorComponent } from './inbox-corredor/inbox-corredor.componen
 import { FacturaComponent } from './factura/factura.component';
 import { FotoComponent } from './foto/foto.component';
 import { AceptandoOfertaComponent } from './aceptando-oferta/aceptando-oferta.component';
+import { ConfirmantePagoComponent } from './confirmante-pago/confirmante-pago.component';
 
 
 
@@ -14,6 +15,7 @@ export const corredorRoutes: Routes = [
     { path: 'inboxCorredor', component: InboxCorredorComponent },
     { path: 'factura/:id', component: FacturaComponent},
     { path: 'foto/:id', component: FotoComponent},
+    { path: 'confirmante/:id', component: ConfirmantePagoComponent},
     { path: 'aceptando/:id', component: AceptandoOfertaComponent},
     { path: 'publicadas', component: PublicadasComponent },
     { path: 'historico', component:  HistoricoComponent},

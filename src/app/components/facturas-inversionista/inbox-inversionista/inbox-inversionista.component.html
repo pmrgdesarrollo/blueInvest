@@ -18,8 +18,10 @@
         <td>{{ oferta?.factura }}</td>
         <td>{{ oferta?.valorOferta | currency:'COP':'$' }}</td>
         <td *ngIf="oferta.liberada === false" > pendiente </td><td *ngIf="oferta.liberada === true" > exitosa </td>
-   <td *ngIf="oferta.fraccion > 0" > {{ oferta?.fraccion | currency:'COP':'$'  }} </td> <td *ngIf="oferta.fraccion == 0" > completo </td> 
-        <td> <h6 *ngIf="oferta.liberada === false" > completando </h6><button [routerLink]="['/inversor/pagar' , oferta?._id ]" (click)="enviarFactura(oferta?.factura )" class="btn btn-success" *ngIf="oferta.liberada === true" > Lista para pago </button> </td>
+        <td *ngIf="oferta.fraccion > 0" > {{ oferta?.fraccion | currency:'COP':'$'  }} </td> <td *ngIf="oferta.fraccion == 0" > completo </td> 
+        <td> <h6 *ngIf="oferta.liberada === false" > completando </h6><button [routerLink]="['/inversor/pagar' , oferta?._id ]" 
+        (click)="enviarFactura(oferta?.factura )" class="btn btn-success" *ngIf="oferta.liberada === true && !oferta.pagoConfirmado" > Lista para pago </button>
+        <h6 *ngIf="oferta?.pagoConfirmado" > pagada  <a [routerLink]="['/inversor/ofertadas']" >ver</a> </h6> </td>
      </tr>
     
       </tbody>

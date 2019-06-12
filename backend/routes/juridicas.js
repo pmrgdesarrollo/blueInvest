@@ -84,7 +84,17 @@ app.post( '/' ,  ( request , response ) => {
     nombreA: body.nombreA,
     documentoA: body.documentoA ,
     cargoA: body.cargoA,
-    telefonoA: body.telefonoA
+    telefonoA: body.telefonoA,
+
+    doc1:body.doc1,
+    doc2:body.doc2,
+    doc3:body.doc3,
+    doc4:body.doc4,
+  //  doc5:body.doc5,
+
+    aprobado:body.aprobado,
+
+    usuario: request.usuario._id,
 
  } );
 
@@ -170,7 +180,16 @@ usuarioJuridico.telefono2=body.telefono2,
 usuarioJuridico.nombreA=body.nombreA,
 usuarioJuridico.documentoA=body.documentoA ,
 usuarioJuridico.cargoA=body.cargoA,
-usuarioJuridico.telefonoA=body.telefonoA
+usuarioJuridico.telefonoA=body.telefonoA,
+
+usuarioJuridico.doc1=body.doc1,
+usuarioJuridico.doc2=body.doc2,
+usuarioJuridico.doc3=body.doc3,
+usuarioJuridico.doc4=body.doc4,
+// usuarioJuridico.doc5=body.doc5,
+
+usuarioJuridico.aprobado=body.aprobado,
+usuarioJuridico.usuario = request.usuario._id;
 
 //luego guardamos el nuevo regsitro
 usuarioJuridico.save( ( error , juridicoEditado ) =>  { 

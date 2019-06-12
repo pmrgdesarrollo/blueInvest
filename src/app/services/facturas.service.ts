@@ -40,7 +40,6 @@ cargarFactura() {
 const url = URL_SERVICIOS + '/factura';
 return this.http.get( url ).pipe(
                                  map( (resp: any) => {
-                                 this.totalFacturas = resp.total;
                                  console.log(resp.ListaDeFacturas);
                                  return resp.ListaDeFacturas;
                                  })
@@ -50,8 +49,8 @@ return this.http.get( url ).pipe(
 cargarMisFacturas( ) {
 // id del usuario para comparar con los ids del arreglo de facturas
 
-let url = URL_SERVICIOS + '/factura/mias/';
-url += this.idLocal ;
+const url = URL_SERVICIOS + '/factura/mias/' + this.idLocal ;
+
 return this.http.get( url ).pipe(
                                  map( (data: any) => { this.respuestaFacturas = data.ListaDeFacturas ;
                                  return this.respuestaFacturas; }),
@@ -104,8 +103,8 @@ cambiarImagen( archivo: File , id: string ) {
 
   this._subirArchivo.subirArchivo( archivo , 'facturas' , id ).then(
   ( resp: any )  => {
-  console.log(resp); this.factura = resp.facturaActualizada;
-  this.factura.docs = resp.facturaActualizada.docs ;
+  console.log(resp); this.factura = resp.facturaActualizadaEnUploads;
+  this.factura.docs = resp.facturaActualizadaEnUploads.docs ;
   swal( 'Factura Publicada' , 'descontador ' + this.factura.descontador , 'success' );
   }).catch( resp => console.log( resp ));
   // si actualiza la imagen del usuario debe guardar de nuevo los datos en el locaStorage.

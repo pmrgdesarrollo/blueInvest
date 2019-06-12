@@ -1,7 +1,7 @@
 <div class="container mt-2">
         <h2><small>Persona Juridica</small></h2><h4><small>Informacion personal</small></h4>
         
-<form  #formularioPersonaJuridica="ngForm">
+        <form [formGroup]='forma' (ngSubmit)="publicarDatos(forma)">
         
 <!--INFORMACION PERSONAL-->       
 <div class="container fondo p-2">
@@ -10,7 +10,7 @@
              
         <div class="form-group mb-1  col-sm-12 col-md-12 col-lg-4">
         <input class="form-control form-control-sm"
-        name=""  
+        formControlName="razon"
         type="text" 
         placeholder="Razon social" 
         id="inputSmall">
@@ -18,7 +18,7 @@
 
         <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4 ">
         <input class="form-control form-control-sm"
-        name=""  
+        formControlName="nit" 
         type="number" 
         placeholder="Nit" 
         id="inputSmall">
@@ -26,7 +26,7 @@
 
         <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4 ">
                 <input class="form-control form-control-sm"
-                name=""  
+                formControlName="representante" 
                 type="text" 
                 placeholder="Nombre representante legal" 
                 id="inputSmall">
@@ -39,14 +39,14 @@
      
         <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4 ">
         <input class="form-control form-control-sm"
-        name=""  
+        formControlName="cargo" 
         type="text" 
         placeholder="Cargo" 
         id="inputSmall">
         </div>
         <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4 ">
         <input class="form-control form-control-sm"
-        name=""  
+        formControlName="documento"  
         type="text" 
         placeholder="Documento de identidad" 
         id="inputSmall">
@@ -54,7 +54,7 @@
 
         <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4 ">
         <input class="form-control form-control-sm"
-        name=""  
+        formControlName="expedido"  
         type="text" 
         placeholder="Lugar de expedicion" 
         id="inputSmall">
@@ -69,22 +69,22 @@
         <div class="row">
 
                 <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4">
-                        <select class="custom-select custom-select-sm">
+                        <select class="custom-select custom-select-sm"  formControlName="clasificacion">
                         <option selected="">Clasificacion</option>
                         <option value="financiera">Financiera</option>
                         <option value="Publica">Publica</option>
-                        <option value="Divorciado">Privada</option>
-                        <option value="Viduo">Mixta</option>
-                        <option value="Otro">Reg nal de valores</option>
-                        <option value="Otro">Gran contribuyente</option>
-                        <option value="Otro">Exenta retefuente</option>
+                        <option value="Privada">Privada</option>
+                        <option value="Mixta">Mixta</option>
+                        <option value="Reg Nal de Valores">Reg nal de valores</option>
+                        <option value="Gran Contribuyente">Gran contribuyente</option>
+                        <option value="Exenta retefuente">Exenta retefuente</option>
                         </select>
         </div>   
         
     
         <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4 ">
         <input class="form-control form-control-sm"
-        name=""  
+        formControlName="actividad"  
         type="text" 
         placeholder="Actividad economica" 
         id="inputSmall">
@@ -92,7 +92,7 @@
         
         <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4 ">
         <input class="form-control form-control-sm"
-        name=""  
+        formControlName="constitucion"  
         type="text" 
         placeholder="Fecha de constitucion" 
         id="inputSmall">
@@ -104,7 +104,7 @@
 
         <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4 ">
                 <input class="form-control form-control-sm"
-                name=""  
+                formControlName="vigencia" 
                 type="text" 
                 placeholder="Vigencia de la sociedad" 
                 id="inputSmall">
@@ -112,7 +112,7 @@
 
         <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4 ">
                 <input class="form-control form-control-sm"
-                name=""  
+                formControlName="capital" 
                 type="text" 
                 placeholder="Capital social" 
                 id="inputSmall">
@@ -120,7 +120,7 @@
 
         <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4 ">
                 <input class="form-control form-control-sm"
-                name=""  
+                formControlName="empleados" 
                 type="text" 
                 placeholder="No de empleados" 
                 id="inputSmall">
@@ -133,7 +133,7 @@
                 
         <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-6">
         <input class="form-control form-control-sm"
-        name=""  
+        formControlName="direccion" 
         type="text" 
         placeholder="Direccion Oficina" 
         id="inputSmall">
@@ -141,7 +141,7 @@
                     
         <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-2">
         <input class="form-control form-control-sm"
-        name=""  
+        formControlName="telefono"  
         type="text" 
         placeholder="telefono" 
         id="inputSmall">
@@ -149,7 +149,7 @@
         
         <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-2">
         <input class="form-control form-control-sm"
-        name=""  
+        formControlName="fax"  
         type="text" 
         placeholder="fax" 
         id="inputSmall">
@@ -157,7 +157,7 @@
 
         <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-2">
         <input class="form-control form-control-sm"
-        name=""  
+        formControlName="celular" 
         type="text" 
         placeholder="Celular" 
         id="inputSmall">
@@ -174,7 +174,7 @@
             
                 <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
                 <input class="form-control form-control-sm"
-                name=""  
+                formControlName="ingresos" 
                 type="text" 
                 placeholder="Ingresos mensuales" 
                 id="inputSmall">
@@ -182,7 +182,7 @@
                 
                 <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
                 <input class="form-control form-control-sm"
-                name=""  
+                formControlName="activos"  
                 type="text" 
                 placeholder="Total activos" 
                 id="inputSmall">
@@ -190,7 +190,7 @@
                 
                 <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
                 <input class="form-control form-control-sm"
-                name=""  
+                formControlName="pasivos" 
                 type="text" 
                 placeholder="Total pasivos" 
                 id="inputSmall">
@@ -198,7 +198,7 @@
 
                 <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
                 <input class="form-control form-control-sm"
-                name=""  
+                formControlName="patrimonio" 
                 type="text" 
                 placeholder="Patrimonio" 
                 id="inputSmall">
@@ -214,23 +214,23 @@
           
               <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4">
               <input class="form-control form-control-sm"
-              name=""  
+              formControlName="entidad"  
               type="text" 
               placeholder="entidad" 
               id="inputSmall">
               </div>
               
               <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-2">
-              <select class="custom-select custom-select-sm">
-              <option selected="">Tipo de cuenta</option>
-              <option value="Soltero">Ahorros</option>
-              <option value="Casado">Corriente</option>
+              <select class="custom-select custom-select-sm"  formControlName="tipo">
+              <option selected="Tipo de cuenta">Tipo de cuenta</option>
+              <option value="Ahorros">Ahorros</option>
+              <option value="Corriente">Corriente</option>
               </select>
               </div>
 
               <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
               <input class="form-control form-control-sm"
-              name=""  
+              formControlName="numero" 
               type="text" 
               placeholder="Numero de cuenta" 
               id="inputSmall">
@@ -238,7 +238,7 @@
 
               <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-3">
               <input class="form-control form-control-sm"
-              name=""  
+              formControlName="titular"  
               type="text" 
               placeholder="Titular" 
               id="inputSmall">
@@ -256,7 +256,7 @@
           
               <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4">
               <input class="form-control form-control-sm"
-              name=""  
+              formControlName="empresa"  
               type="text" 
               placeholder="nombre de la empresa" 
               id="inputSmall">
@@ -264,7 +264,7 @@
               
               <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4">
               <input class="form-control form-control-sm"
-              name=""  
+              formControlName="ciudad" 
               type="text" 
               placeholder="Ciudad" 
               id="inputSmall">
@@ -272,7 +272,7 @@
 
               <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4">
               <input class="form-control form-control-sm"
-              name=""  
+              formControlName="telefono2" 
               type="text" 
               placeholder="Telefono" 
               id="inputSmall">
@@ -290,7 +290,7 @@
           
               <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4">
               <input class="form-control form-control-sm"
-              name=""  
+              formControlName="nombreA" 
               type="text" 
               placeholder="Nombre" 
               id="inputSmall">
@@ -298,7 +298,7 @@
               
               <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4">
               <input class="form-control form-control-sm"
-              name=""  
+              formControlName="documentoA"   
               type="text" 
               placeholder="Documento de identidad" 
               id="inputSmall">
@@ -306,7 +306,7 @@
 
               <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4">
               <input class="form-control form-control-sm"
-              name=""  
+              formControlName="cargoA" 
               type="text" 
               placeholder="Cargo" 
               id="inputSmall">
@@ -314,7 +314,7 @@
 
               <div class="form-group  mb-1 col-sm-12 col-md-12 col-lg-4">
               <input class="form-control form-control-sm"
-              name=""  
+              formControlName="telefonoA" 
               type="text" 
               placeholder="telefono" 
               id="inputSmall">
@@ -325,8 +325,73 @@
                       
 </div>  
 
+<h4><small>Documentos</small></h4>
+
+
+<div class="row text-center">
+
+        <div class="col-sm-12 col-md-12 col-lg-6 mt-2">
+            <div class="row">
+            <div class="col-12">
+            <div class="card text-center pt-1 mb-0 ">
+            <h6 class="text-black-50 mb-0"> Rut Actualizado </h6>
+            <div class="card-body p-2">
+            <input type="file" class="btn btn-sm btn-primary" (change)="seleccionImagen($event.target.files[0])" formControlName="doc1">
+            </div>
+            </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-12 col-lg-6 mt-2">
+              <div class="row">
+              <div class="col-12">
+              <div class="card text-center pt-1 mb-0 ">
+              <h6 class="text-black-50 mb-0"> Declaración de Renta </h6>
+              <div class="card-body p-2">
+              <input type="file" class="btn btn-sm btn-primary" (change)="seleccionImagen($event.target.files[0])" formControlName="doc2">
+              </div>
+              </div>
+              </div>
+              </div>
+          </div>
+
+      </div>
+
+      <div class="row">
+
+              <div class="col-sm-12 col-md-12 col-lg-6 mt-2">
+                      <div class="row">
+                      <div class="col-12">
+                      <div class="card text-center pt-1 mb-0 ">
+                      <h6 class="text-black-50 mb-0"> Certificación Bancaria </h6>
+                      <div class="card-body p-2">
+                      <input type="file" class="btn btn-sm btn-primary" (change)="seleccionImagen($event.target.files[0])" formControlName="doc3">
+                      </div>
+                      </div>
+                      </div>
+                      </div>
+                  </div>
+    
+                  <div class="col-sm-12 col-md-12 col-lg-6 mt-2">
+                        <div class="row">
+                        <div class="col-12">
+                        <div class="card text-center pt-1 mb-0 ">
+                        <h6 class="text-black-50 mb-0"> Cédula </h6>
+                        <div class="card-body p-2">
+                        <input type="file" class="btn btn-sm btn-primary" (change)="seleccionImagen($event.target.files[0])" formControlName="doc4">
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                    </div>
+
+
+
+      </div>
+
 <div class="form-group formularioRegistro">
-<button  [routerLink]="['/corredor']" class="btn btn-success submit-btn btn-block mt-4 mb-5">Enviar datos</button>
+<button  type="submit"  class="btn btn-success  btn-block mt-4 mb-5">Enviar datos</button>
 </div>
 
 </form>

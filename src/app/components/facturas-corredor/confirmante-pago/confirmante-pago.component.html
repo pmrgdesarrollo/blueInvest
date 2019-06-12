@@ -1,0 +1,15 @@
+
+<div class="container text-center">
+
+  <h5>Comprobante de pago por</h5>
+
+<h2> {{ oferta?.valorOferta | currency }} </h2>
+<button *ngIf="!confirmada"  (click)="confirmarPago( oferta )" class="btn btn-success mb-2">Confirmar pago satisfactorio</button>
+<button *ngIf="confirmada" [routerLink]="['/corredor/historico']" class="btn btn-success mb-2"> Ver mi posicion </button>
+<button *ngIf="!confirmada" class="ml-2 btn btn-danger mb-2">Denunciar</button>
+<img [src]="oferta?.docsOf | oferta "   class="mb-3 confirmanteFoto">
+
+
+
+
+</div>
