@@ -1,3 +1,3 @@
 // CONSTANTES
 
-export const URL_SERVICIOS = 'https://blauvestback.herokuapp.com/oferta' ;
+export const URL_SERVICIOS = 'https://blauvestback.herokuapp.com' ;
