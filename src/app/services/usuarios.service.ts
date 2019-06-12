@@ -19,7 +19,7 @@ export class UsuariosService {
   usuario: Usuario;
 
   constructor( private _http: HttpClient , public router: Router  ) {
- 
+
   }
 
 // CONEXION CON EL BACKEND //
@@ -60,7 +60,7 @@ cargarStorage() {
 
 // REGISTRAR UN USUARIO
 crearUsuario( usuario: Usuario ) {
-const url = '/usuario';
+const url = URL_SERVICIOS + '/usuario';
 return this._http.post( url , usuario ).pipe(
 map( (resp: any) => {
 swal( 'Usuario creado correctamente' , usuario.email , 'success'  );
@@ -78,7 +78,7 @@ loginService( usuario: Usuario , recordame: boolean = false  ) {
   localStorage.removeItem( 'email');
   }
 
-const url = '/login';
+const url = URL_SERVICIOS + '/login';
 return this._http.post( url , usuario ).pipe(
 
   map( (resp: any ) => {
@@ -111,7 +111,7 @@ guardarStorage( id: string, token: string, usuario: Usuario ) {
 
 loginGoogle( token: string ) {
 
-  const url = '/login/google';
+  const url = URL_SERVICIOS + '/login/google';
 
   return this._http.post( url, { token } ).pipe(
                 map( (resp: any) => {
@@ -123,7 +123,7 @@ loginGoogle( token: string ) {
 }
 
 buscarUsuario( id: string ) {
-const url = '/usuario/' + id;
+const url = URL_SERVICIOS + '/usuario/' + id;
 return this._http.get( url ).pipe(
 map( (resp: any) => {
 console.log( resp.usuario );
