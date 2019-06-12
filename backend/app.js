@@ -25,6 +25,9 @@ var imagenes = require('./routes/imagenes');
 //CALLS
 var app = express();
 var server = require('http').Server(app);
+
+var PORT = process.env.PORT || 8080 ;
+
 //CORS MIDLEWARE *** Actualizar a www.blueinvest.co
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -62,4 +65,5 @@ app.use('/upload', fileUpload);
 
 app.use('/', appRoute);
 // LISTENERS
-server.listen( 8000, () => { console.log('puerto 8000:\x1b[33m%s\x1b[0m', 'Online'); });
+server.listen( PORT, () => { console.log('puerto:\x1b[33m%s\x1b[0m', PORT, 'Online'); });
+
