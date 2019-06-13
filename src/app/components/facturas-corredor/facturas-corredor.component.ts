@@ -30,7 +30,7 @@ import { OfertaService } from '../../services/oferta.service';
 
   .publicadas{
    background:#2B83C8;
-   height:60vh;
+   height:50vh;
    border-radius:0 0 10px 10px  ;
 
   }

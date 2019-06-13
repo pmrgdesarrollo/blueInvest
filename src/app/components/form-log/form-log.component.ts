@@ -72,19 +72,21 @@ export class FormLogComponent implements OnInit {
     null,
     forma.value.email,
     forma.value.password,
-    null
+    null,
    );
 
 
 
 this._usuarioService.loginService( usuario , forma.value.recordarme ).subscribe(( data: any ) => {
-console.log( data ) ;
+console.log( data.usuario.role ) ;
 
-// userId = data.id ;
+if ( data.usuario.role  ===  'CORREDOR'  ) { this.router.navigate( [ '/corredor' ] ); } else {
+this.router.navigate( [ '/inversor' ] ); }
 
-this.router.navigate( [ '/aprobacion' ] ); } );
+// else { this.router.navigate( [ '/aprobacion' ] );}
 
-  }
+});
+}
 
 
 
